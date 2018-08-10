@@ -1,13 +1,13 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
 
-class AllRecipesPage extends React.Component {
-    render() {
-        return (
+import RecipesList from '../components/recipes/RecipeList';
+import RecipesShow from '../components/recipes/RecipeShow';
+
+const AllRecipesPage = ({recipes}) => (
             <div>
-                <h1>AllTheRecipes index page</h1>
+                <RecipesList recipes={recipes} />
             </div>
-        );
-    }
-  }
+)
   
   export default AllRecipesPage;
