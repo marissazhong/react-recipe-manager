@@ -8,9 +8,12 @@ class RecipeList extends React.Component {
   render() {
     const recipes = this.props.recipes;
     const renderRecipes = Object.keys(recipes).map(recipeID =>
-        <div key={recipeID} className="col-lg-4">
-          <Link className="thumbnail" to={`recipes/${recipeID}`}><img src={Images[`${recipeID}.jpg`]} alt={recipes[recipeID].name} width="240px"/></Link>
-        </div>
+        <Link key={recipeID} className="card" to={`recipes/${recipeID}`} style={{ width: '240px', margin: '20px' }}>
+          <img className="card-img-top" src={Images[`${recipeID}.jpg`]} alt={recipes[recipeID].name} />
+          <div class="card-body">
+          <h6 class="card-title">{recipes[recipeID].name}</h6>
+          </div>
+        </Link>
     );
     return (
       <div className="container">
