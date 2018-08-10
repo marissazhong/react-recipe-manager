@@ -7,9 +7,9 @@ import RecipeShow from '../components/recipes/RecipeShow';
 import { recipes } from '../data';
 
 const AllRecipesPage = () => (
-    <div>
+    <div className="container-fluid">
         <NavBar />
-        <h1>Welcome!</h1>
+        <h3>Today's Featured Recipes</h3>
         <RecipeList recipes={recipes}/>
     </div>
 )
