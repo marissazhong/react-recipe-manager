@@ -1,12 +1,13 @@
 import React from 'react';
- 
-const RecipeShow = props => {
+import defaultImage from '../../images/icons/defaultRecipe.jpeg';
 
+const RecipeShow = props => {
+  // const imgPath = `${process.env.PUBLIC_URL}/images/icons/defaultRecipe.jpeg`;
   return (
-    <div class="col-xs-6 col-md-3">
-      {/* <a href="#" class="thumbnail">
-        <img src="../../../images/icons/defaultRecipe.jpeg" alt="A Recipe">
-      </a> */}
+    <div className="col-xs-6 col-md-3">
+      <a href="/" className="thumbnail">
+        <img src={defaultImage} alt="A Recipe" width="120px"/>
+      </a>
       <h1>Hi!</h1>
     </div>
   );
