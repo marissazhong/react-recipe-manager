@@ -9,10 +9,6 @@ const AllRecipesPage = ({match}) => (
             <div>
                 <h1>Welcome!</h1>
                 <RecipeList recipes={recipes}/>
-                <Route exact path={match.url} render={() => (
-                    <h3>Please select a Recipe from the list.</h3>
-                )}/>
-                <Route path={`${match.url}/:recipeId`} component={RecipeShow}/>
             </div>
 )
 
