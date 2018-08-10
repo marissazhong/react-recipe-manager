@@ -1,11 +1,13 @@
 import React from 'react';
 
-const AllRecipesPage = () => {
-    return (
-        <div>
-        <h1>Welcome to AllTheRecipes!</h1>
-        </div>
-    );
+class AllRecipesPage extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1>AllTheRecipes index page</h1>
+            </div>
+        );
+    }
   }
   
   export default AllRecipesPage;
