@@ -1,7 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import RecipeShow from './RecipeShow';
-import defaultImage from '../../images/recipes/defaultRecipe.jpg';
 import Images from '../../images/ImportImages';
 
 function slug(string) {
@@ -14,8 +12,8 @@ class RecipeList extends React.Component {
     const renderRecipes = Object.keys(recipes).map(recipeID =>
         <Link key={recipeID} className="card" to={`recipes/${recipeID}`} style={{ width: '240px', margin: '20px' }}>
           <img className="card-img-top" src={Images[`${slug(recipes[recipeID].name)}.jpg`]} alt={recipes[recipeID].name} />
-          <div class="card-body">
-          <h6 class="card-title">{recipes[recipeID].name}</h6>
+          <div className="card-body">
+          <h6 className="card-title">{recipes[recipeID].name}</h6>
           </div>
         </Link>
     );

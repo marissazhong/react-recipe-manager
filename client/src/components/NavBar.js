@@ -10,7 +10,7 @@ const NavBar = () => {
           style={{ marginRight: '10px' }} 
           to="/"
         >
-          <img src={logo} className="nav-item" height="40px"/>
+          <img src={logo} className="nav-item" alt="logo" height="40px"/>
         </NavLink>
         <NavLink className="nav-link"
           style={{ marginRight: '10px' }} 

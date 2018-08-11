@@ -1,6 +1,5 @@
 import React from 'react';
 import NavBar from '../../components/NavBar';
-import defaultImage from '../../images/recipes/defaultRecipe.jpg';
 import Images from '../../images/ImportImages';
 
 function slug(string) {

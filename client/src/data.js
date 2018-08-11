@@ -1,5 +1,6 @@
 let recipes = [
     {
+        userId: 0,
         name: "Vanilla Cupcakes",
         prepTime: 20,
         cookTime: 14,
@@ -26,6 +27,7 @@ let recipes = [
         ]
     },
     {
+        userId: 0,
         name: "Chocolate Chip Cookies",
         prepTime: 20,
         cookTime: 10,
@@ -52,6 +54,7 @@ let recipes = [
         ]
     },
     {
+        userId: 0,
         name: "Pecan Pie",
         prepTime: 20,
         cookTime: 60,
@@ -75,6 +78,7 @@ let recipes = [
         ]
     },
     {
+        userId: 0,
         name: "Chocolate Babka",
         prepTime: 150,
         cookTime: 50,
@@ -118,6 +122,7 @@ let recipes = [
         ]
     },
     {
+        userId: 0,
         name: "Macaron",
         prepTime: 150,
         cookTime: 10,
@@ -135,6 +140,7 @@ let recipes = [
         ]
     },
     {
+        userId: 0,
         name: "French Meringue",
         prepTime: 20,
         cookTime: 180,
@@ -149,6 +155,7 @@ let recipes = [
         ]
     },
     {
+        userId: 0,
         name: "Brownies",
         prepTime: 30,
         cookTime: 30,
@@ -169,6 +176,7 @@ let recipes = [
         ]
     },
     {
+        userId: 0,
         name: "Crepes",
         prepTime: 15,
         cookTime: 20,
@@ -187,6 +195,7 @@ let recipes = [
         ]
     },
     {
+        userId: 0,
         name: "Sugar Coated Pecans",
         prepTime: 15,
         cookTime: 60,
@@ -206,6 +215,7 @@ let recipes = [
         ]
     },
     {
+        userId: 0,
         name: "Challah Bread",
         prepTime: 30,
         cookTime: 40,
@@ -227,6 +237,7 @@ let recipes = [
         ]
     },
     {
+        userId: 0,
         name: "Carrot Cake",
         prepTime: 20,
         cookTime: 60,
@@ -257,6 +268,7 @@ let recipes = [
         ]
     },
     {
+        userId: 0,
         name: "Peanut Butter Cookies",
         prepTime: 15,
         cookTime: 10,
@@ -278,6 +290,7 @@ let recipes = [
         ]
     },
     {
+        userId: 0,
         name: "Lemon Bars",
         prepTime: 15,
         cookTime: 40,
@@ -298,6 +311,7 @@ let recipes = [
         ]
     },
     {
+        userId: 0,
         name: "Sugar Cookies",
         prepTime: 15,
         cookTime: 10,
@@ -317,6 +331,7 @@ let recipes = [
         ]
     },
     {
+        userId: 0,
         name: "Oatmeal Raisin Cookies",
         prepTime: 15,
         cookTime: 10,
@@ -340,6 +355,7 @@ let recipes = [
         ]
     },
     {
+        userId: 0,
         name: "Cranberry Pistachio Biscotti",
         prepTime: 25,
         cookTime: 45,
@@ -364,6 +380,7 @@ let recipes = [
         ]
     },
     {
+        userId: 0,
         name: "Russian Tea Cakes",
         prepTime: 60,
         cookTime: 45,
@@ -383,6 +400,7 @@ let recipes = [
         ]
     },
     {
+        userId: 0,
         name: "Red Velvet Cake",
         prepTime: 40,
         cookTime: 20,
@@ -409,6 +427,7 @@ let recipes = [
         ]
     },
     {
+        userId: 0,
         name: "Cheesecake",
         prepTime: 30,
         cookTime: 45,
@@ -433,6 +452,7 @@ let recipes = [
         ]
     },
     {
+        userId: 1,
         name: "White Cake",
         prepTime: 20,
         cookTime: 20,
