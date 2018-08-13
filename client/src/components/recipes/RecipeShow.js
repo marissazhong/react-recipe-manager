@@ -45,7 +45,7 @@ const RecipeShow = ({match, recipes}) => {
         </div>
         <div className="col-8">
           <h2>Directions:</h2>
-          <table class="table-sm" style={{width: '800px'}}>
+          <table className="table-sm" style={{width: '400px'}}>
               <tbody>
                 {recipe.directions.map(function(direction,i) {
                       return (<tr key={i}>

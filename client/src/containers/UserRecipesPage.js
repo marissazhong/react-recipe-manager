@@ -8,20 +8,10 @@ const UserRecipesPage = ({match, recipes}) => {
     return(
         <div className="container-fluid">
             <NavBar />
-            <div className="row">
-                <div className="col-8">
-                    <h3>Your Recipes</h3>
-                    <RecipeList recipes={recipes}/>
-                </div>
-                <div className="col-4">
-                    <div className="card" style={{margin: '20px'}}>
-                        <div className="card-body">
-                            <h4 className="card-title">Create New Recipe</h4>
-                            <NewRecipeForm />
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <h3 style={{display: 'inline-block'}}>Your Recipes</h3>
+            <button style={{float: 'right', margin: '30px'}}type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">New Recipe</button>
+            <RecipeList recipes={recipes}/>
+            <NewRecipeForm />
         </div>
     )
   }
