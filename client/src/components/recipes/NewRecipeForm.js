@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import TextInput from './TextInput'
+
 class NewRecipeForm extends Component {
 
     state = {
@@ -31,46 +33,11 @@ class NewRecipeForm extends Component {
                     </div>
                     <div class="modal-body">
                     <form onSubmit={(event) => this.handleOnSubmit(event)} style={{margin: '20px'}}>
-                        <div className="form-group row">
-                            <div className="col-sm-4">
-                                <label>Name:</label>
-                            </div>
-                            <div className="col-sm">
-                                <input type="text" value={this.state.name} onChange={(event) => this.handleOnChange(event)}/>
-                            </div>
-                        </div>
-                        <div className="form-group row">
-                            <div className="col-sm-4">
-                                <label>Prep Time:</label>
-                            </div>
-                            <div className="col-sm">
-                                <input type="text" value={this.state.prepTime} onChange={(event) => this.handleOnChange(event)}/>
-                            </div>
-                        </div>
-                        <div className="form-group row">
-                            <div className="col-sm-4">
-                                <label>Cook Time:</label>
-                            </div>
-                            <div className="col-sm">
-                                <input type="text" value={this.state.cookTime} onChange={(event) => this.handleOnChange(event)}/>
-                            </div>
-                        </div>
-                        <div className="form-group row">
-                            <div className="col-sm-4">
-                                <label>Ingredients:</label>
-                            </div>
-                            <div className="col-sm">
-                                <input type="text" value={this.state.ingredients} onChange={(event) => this.handleOnChange(event)}/>
-                            </div>
-                        </div>
-                        <div className="form-group row">
-                            <div className="col-sm-4">
-                                <label>Directions:</label>
-                            </div>
-                            <div className="col-sm">
-                                <input type="text" value={this.state.ingredients} onChange={(event) => this.handleOnChange(event)}/>
-                            </div>
-                        </div>
+                        <TextInput label="Name" onChange="" value="" />
+                        <TextInput label="Prep Time" onChange="" value="" />
+                        <TextInput label="Cook Time" onChange="" value="" />
+                        <TextInput label="Ingredients" onChange="" value="" />
+                        <TextInput label="Directions" onChange="" value="" />
                     <input className="btn btn-primary" type="submit" />
                     </form>
                     </div>
