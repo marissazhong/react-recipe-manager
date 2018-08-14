@@ -1,4 +1,4 @@
-import React from 'react';
+import React from '../../../../Library/Caches/typescript/2.9/node_modules/@types/react';
 
 import NavBar from '../components/NavBar';
 import RecipeList from '../components/recipes/RecipeList';
