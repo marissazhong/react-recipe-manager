@@ -1,14 +1,14 @@
-import React from '../../../Library/Caches/typescript/2.9/node_modules/@types/react';
-import ReactDOM from '../../../Library/Caches/typescript/2.9/node_modules/@types/react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import recipesReducer from './reducers/recipesReducer';
-import { Provider } from '../../../Library/Caches/typescript/2.9/node_modules/@types/react-redux';
-import { createStore } from '../../../Library/Caches/typescript/2.9/node_modules/redux';
+import rootReducer from './reducers/rootReducer';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 import registerServiceWorker from './registerServiceWorker';
 
 const store = createStore(
-    manageRecipes,
+    rootReducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
 

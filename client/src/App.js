@@ -1,6 +1,6 @@
-import React, { Component } from '../../../Library/Caches/typescript/2.9/node_modules/@types/react';
+import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route } from '../../../Library/Caches/typescript/2.9/node_modules/@types/react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import LoginPage from './containers/LoginPage';
 import AllRecipesPage from './containers/AllRecipesPage';
@@ -24,6 +24,7 @@ class App extends Component {
 
   render() {
     return (
+      
       <Router>
         <div className="app">
           <Route exact path="/login" component={LoginPage} />

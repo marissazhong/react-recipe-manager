@@ -1,5 +1,5 @@
-import React from '../../../../../Library/Caches/typescript/2.9/node_modules/@types/react';
-import { Link } from '../../../../../Library/Caches/typescript/2.9/node_modules/@types/react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import Images from '../../images/ImportImages';
 
 function slug(string) {

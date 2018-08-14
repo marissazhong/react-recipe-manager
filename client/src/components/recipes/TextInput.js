@@ -1,4 +1,4 @@
-import React from '../../../../../Library/Caches/typescript/2.9/node_modules/@types/react';
+import React from 'react';
 
 const TextInput = ({label, onChange, value}) => {
     return(
@@ -7,7 +7,7 @@ const TextInput = ({label, onChange, value}) => {
                 <label>{label}: </label>
             </div>
             <div className="col-sm">
-                <input type="text" value={value} onChange={onChange}/>
+                <input type="text" className="form-control" onChange={onChange} value={value} />
             </div>
         </div>
     )

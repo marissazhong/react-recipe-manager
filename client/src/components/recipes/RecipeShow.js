@@ -1,4 +1,4 @@
-import React from '../../../../../Library/Caches/typescript/2.9/node_modules/@types/react';
+import React from 'react';
 import NavBar from '../NavBar';
 import Images from '../../images/ImportImages';
 import RecipeForm from './RecipeForm';
@@ -21,7 +21,7 @@ const RecipeShow = ({match, recipes}) => {
           <h1>{recipe.name}</h1>
           <h5 style={{margin: '10px'}}>Prep Time: {recipe.prepTime} minutes</h5>
           <h5 style={{margin: '10px'}}>Cook Time: {recipe.cookTime} minutes</h5>
-          <button style={{margin: '10px'}}type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Edit Recipe</button>
+          <button style={{margin: '10px'}}type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Edit Recipe</button>
         </div>
       </div>
       <br />

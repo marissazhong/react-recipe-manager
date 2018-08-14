@@ -1,57 +1,55 @@
-import React, { Component } from '../../../../../Library/Caches/typescript/2.9/node_modules/@types/react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 import TextInput from './TextInput'
 
 class RecipeForm extends Component {
 
     state = {
-        name: ''
+        name: '', prepTime: '', cookTime: '', ingredients: '', directions: ''
     }
 
-    handleOnChange(event) {
+    handleChange(field, event) {
         this.setState({
-
+            [field]: event.target.value,
         })
     }
 
     handleOnSubmit(event) {
         event.preventDefault();
-
+        this.props.addRecipe(this.state);
+        this.setState({
+            name: '', prepTime: '', cookTime: '', ingredients: '', directions: ''
+        });
+        event.target.reset();
     }
 
     render() {
         return(
             <div>
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">New Recipe</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                    <form onSubmit={(event) => this.handleOnSubmit(event)} style={{margin: '20px'}}>
-                        <TextInput label="Name" onChange="" value="" />
-                        <TextInput label="Prep Time" onChange="" value="" />
-                        <TextInput label="Cook Time" onChange="" value="" />
-                        <TextInput label="Ingredients" onChange="" value="" />
-                        <TextInput label="Directions" onChange="" value="" />
-                    <input className="btn btn-primary" type="submit" />
-                    </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Create New Recipe</button>
-                    </div>
-                    </div>
-                </div>
+                <form onSubmit={(event) => this.handleOnSubmit(event)}>
+                    <TextInput label="Name" onChange={(event) => this.handleChange("name", event)} />
+                    <TextInput label="Prep Time" onChange={(event) => this.handleChange("prepTime", event)}/>
+                    <TextInput label="Cook Time" onChange={(event) => this.handleChange("cookTime", event)}/>
+                    <TextInput label="Ingredients" onChange={(event) => this.handleChange("ingredients", event)}/>
+                    <TextInput label="Directions" onChange={(event) => this.handleChange("directions", event)}/>
+                    <button type="submit" className="btn btn-primary">Create New Recipe</button>
+                </form>
             </div>
-            
-        </div>
-        );
+        )}
+}
+
+const mapStateToProps = state => {
+    return {
+        recipe: this.state
     }
 }
 
-export default RecipeForm;
+const mapDispatchToProps = dispatch => {
+    return {
+        addRecipe: recipe => dispatch({ type: "ADD_RECIPE", payload: recipe })
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RecipeForm);
+

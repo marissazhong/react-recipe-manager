@@ -6,7 +6,7 @@ import usersReducer from './usersReducer'
 const rootReducer = combineReducers({
   recipes: recipesReducer,
   ingredients: ingredientsReducer,
-  users: userReducer
+  users: usersReducer
 });
  
 export default rootReducer
