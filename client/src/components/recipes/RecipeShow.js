@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from '../../components/NavBar';
 import Images from '../../images/ImportImages';
+import RecipeForm from '../components/recipes/RecipeForm';
 
 function slug(string) {
   return string.toLowerCase().replace(/\s/g,'-');
@@ -20,6 +21,7 @@ const RecipeShow = ({match, recipes}) => {
           <h1>{recipe.name}</h1>
           <h5 style={{margin: '10px'}}>Prep Time: {recipe.prepTime} minutes</h5>
           <h5 style={{margin: '10px'}}>Cook Time: {recipe.cookTime} minutes</h5>
+          <button style={{float: 'right', margin: '30px'}}type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Edit Recipe</button>
         </div>
       </div>
       <br />

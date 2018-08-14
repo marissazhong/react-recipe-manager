@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import TextInput from './TextInput'
 
-class NewRecipeForm extends Component {
+class RecipeForm extends Component {
 
     state = {
         name: ''
@@ -54,4 +54,4 @@ class NewRecipeForm extends Component {
     }
 }
 
-export default NewRecipeForm;
+export default RecipeForm;
