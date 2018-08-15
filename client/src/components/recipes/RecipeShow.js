@@ -1,7 +1,7 @@
 import React from 'react';
 import NavBar from '../NavBar';
 import Images from '../../images/ImportImages';
-import RecipeForm from './RecipeForm';
+import RecipeInput from './RecipeInput';
 
 function slug(string) {
   return string.toLowerCase().replace(/\s/g,'-');

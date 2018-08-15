@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import NavBar from '../components/NavBar';
 import RecipeList from '../components/recipes/RecipeList';
-import RecipeForm from '../components/recipes/RecipeForm';
+import RecipeInput from '../components/recipes/RecipeInput';
 
 class UserRecipesPage extends Component {
     render() {
@@ -16,11 +16,10 @@ class UserRecipesPage extends Component {
                     <div className="col-7">
                         <h3>Your Recipes</h3>
                         <RecipeList recipes={userRecipes}/>
-                        {/* {console.log(userRecipes)} */}
                     </div>
                     <div className="col-4">
                         <h3>New Recipe</h3>
-                        <RecipeForm addRecipe={this.props.addRecipe} />
+                        <RecipeInput addRecipe={this.props.addRecipe} />
                     </div>
                 </div>
             </div>

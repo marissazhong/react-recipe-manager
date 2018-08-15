@@ -1,6 +1,6 @@
 import { ingredients } from '../data';
 
-export default function ingredientsReducer(state = [], action) {
+export default function ingredientsReducer(state = ingredients, action) {
     switch (action.type) {
       case 'ADD_INGREDIENT':
   
