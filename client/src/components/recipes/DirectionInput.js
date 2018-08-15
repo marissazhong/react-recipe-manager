@@ -31,22 +31,26 @@ class DirectionInput extends Component {
         return(
             <div className="form-group row">
                 <div className="col-sm-4">
-                    <label>{this.props.label}: </label>
+                    <label>Directions: </label>
                 </div>
-                <div className="col-sm">
-                    <table className="table-sm">
+                <div className="col-sm-8">
+                    <table className="table-sm">        
                     <tbody>
                         {this.state.directions.map((direction, index) => {
                             return (
                                 <tr key={'direction-' + index}>
-                                    <td className="col-sm-6"><input type="text" className="form-control" onChange={(event) => this.handleChange(index, event)} value={direction} placeholder="ex. Mix ingredients" /></td>
-                                    <td><button id="deleteRow" className="btn btn-light btn-sm" onClick={(event) => this.deleteRow(index, event)}>Delete</button></td>
+                                    <td style={{width: '5%'}}>{index+1}.</td>
+                                    <td style={{width: '90%'}}>
+                                        <input type="text" className="form-control" onChange={(event) => this.handleChange(index, event)} value={direction} placeholder="ex. Mix ingredients" />
+                                    </td>
+                                    <td style={{width: '5%'}}><button id="deleteRow" className="btn btn-light btn-sm" onClick={(event) => this.deleteRow(index, event)}>Delete</button></td>
                                 </tr>
                             )
                         })}
                     </tbody>
                     <tfoot>
                         <tr>
+                            <td></td>
                             <td><button id="addRow" className="btn btn-light" onClick={this.addRow}>Add Row</button></td>
                         </tr>
                     </tfoot>

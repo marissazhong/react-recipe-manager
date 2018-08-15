@@ -31,7 +31,7 @@ class IngredientInput extends Component {
         return (
             <div className="form-group row">
                 <div className="col-sm-4">
-                    <label>{this.props.label}: </label>
+                    <label>Ingredients: </label>
                 </div>
                 <div className="col-sm">
                     <table className="table-sm">
