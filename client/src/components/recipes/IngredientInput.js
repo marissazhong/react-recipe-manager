@@ -12,7 +12,7 @@ class IngredientInput extends Component {
         this.setState({
             ingredients: update(this.state.ingredients, {[index]: {[field]: {$set: value}}})
         })
-        this.props.updateIngredients(this.state)
+        this.props.updateIngredients(this.state.ingredients)
     }
 
     addRow = (event) => {

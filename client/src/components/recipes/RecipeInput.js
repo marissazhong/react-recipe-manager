@@ -22,6 +22,12 @@ class RecipeInput extends Component {
         })
     }
 
+    updateDirections = (directions) => {
+        this.setState({
+            directions: directions
+        })
+    }
+
     handleOnSubmit(event) {
         event.preventDefault();
         console.log(this.state)
@@ -40,7 +46,7 @@ class RecipeInput extends Component {
                     <TextInput label="Prep Time" onChange={(event) => this.handleChange("prepTime", event)}/>
                     <TextInput label="Cook Time" onChange={(event) => this.handleChange("cookTime", event)}/>
                     <IngredientInput updateIngredients={this.updateIngredients} />
-                    <DirectionInput />
+                    <DirectionInput updateDirections={this.updateDirections}/>
                     <button type="submit" className="btn btn-primary">Create New Recipe</button>
                 </form>
             </div>

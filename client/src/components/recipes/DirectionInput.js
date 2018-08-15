@@ -12,6 +12,7 @@ class DirectionInput extends Component {
         this.setState({
             directions: update(this.state.directions, {[index]: {$set: direction}})
         })
+        this.props.updateDirections(this.state.directions)
     }
 
     addRow = (event) => {
