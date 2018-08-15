@@ -7,20 +7,12 @@ class IngredientInput extends Component {
         ingredients: [{name: '', quantity: ''}]
     }
 
-    handleNameChange(index, event) {
-        const name = event.target.value
+    handleChange(index, field, event) {
+        const value = event.target.value
         this.setState({
-            ingredients: update(this.state.ingredients, {[index]: {name: {$set: name}}})
+            ingredients: update(this.state.ingredients, {[index]: {[field]: {$set: value}}})
         })
     }
-
-    handleQuantityChange(index, event) {
-        const quantity = event.target.value
-        this.setState({
-            ingredients: update(this.state.ingredients, {[index]: {quantity: {$set: quantity}}})
-        })
-    }
-
 
     addRow = () => {
         const ingredients = this.state.ingredients
@@ -52,8 +44,8 @@ class IngredientInput extends Component {
                         {this.state.ingredients.map((ingredient, index) => {
                             return (
                                 <tr key={'ingredient-' + index}>
-                                    <td><input type="text" className="form-control" onChange={(event) => this.handleNameChange(index, event)} value={this.props.value} placeholder="ex. Flour" /></td>
-                                    <td><input type="text" className="form-control" onChange={(event) => this.handleQuantityChange(index, event)} value={this.props.value} placeholder="ex. 2 cups" /></td>
+                                    <td><input type="text" className="form-control" onChange={(event) => this.handleChange(index, "name", event)} value={this.props.value} placeholder="ex. Flour" /></td>
+                                    <td><input type="text" className="form-control" onChange={(event) => this.handleChange(index, "quantity", event)} value={this.props.value} placeholder="ex. 2 cups" /></td>
                                 </tr>
                             )
                         })}
