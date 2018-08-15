@@ -12,9 +12,11 @@ class IngredientInput extends Component {
         this.setState({
             ingredients: update(this.state.ingredients, {[index]: {[field]: {$set: value}}})
         })
+        this.props.updateIngredients(this.state)
     }
 
-    addRow = () => {
+    addRow = (event) => {
+        event.preventDefault();
         const ingredients = this.state.ingredients
         ingredients.push({name: '', quantity: ''})
         this.setState({ingredients: ingredients})
@@ -55,7 +57,7 @@ class IngredientInput extends Component {
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td><button id="addRow" className="btn btn-light" onClick={this.addRow}>Add Row</button></td>
+                            <td><button id="addRow" className="btn btn-light" onClick={(event) => this.addRow(event)}>Add Row</button></td>
                         </tr>
                     </tfoot>
                     </table>

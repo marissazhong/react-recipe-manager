@@ -14,7 +14,8 @@ class DirectionInput extends Component {
         })
     }
 
-    addRow = () => {
+    addRow = (event) => {
+        event.preventDefault();
         const directions = this.state.directions
         directions.push('')
         this.setState({directions: directions})
@@ -51,7 +52,7 @@ class DirectionInput extends Component {
                     <tfoot>
                         <tr>
                             <td></td>
-                            <td><button id="addRow" className="btn btn-light" onClick={this.addRow}>Add Row</button></td>
+                            <td><button id="addRow" className="btn btn-light" onClick={(event) => this.addRow(event)}>Add Row</button></td>
                         </tr>
                     </tfoot>
                     </table>
