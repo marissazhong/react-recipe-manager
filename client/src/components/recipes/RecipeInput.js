@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import TextInput from './TextInput'
 import IngredientInput from './IngredientInput'
+import DirectionInput from './DirectionInput'
 
 class RecipeInput extends Component {
     
@@ -32,7 +33,7 @@ class RecipeInput extends Component {
                     <TextInput label="Prep Time" onChange={(event) => this.handleChange("prepTime", event)}/>
                     <TextInput label="Cook Time" onChange={(event) => this.handleChange("cookTime", event)}/>
                     <IngredientInput label="Ingredients" />
-                    <TextInput label="Directions" onChange={(event) => this.handleChange("directions", event)}/>
+                    <DirectionInput label="Directions" />
                     <button type="submit" className="btn btn-primary">Create New Recipe</button>
                 </form>
             </div>

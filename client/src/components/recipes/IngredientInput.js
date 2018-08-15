@@ -30,7 +30,6 @@ class IngredientInput extends Component {
     render() {
         return (
             <div className="form-group row">
-                {console.log(this.state)}
                 <div className="col-sm-4">
                     <label>{this.props.label}: </label>
                 </div>
