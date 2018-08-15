@@ -16,13 +16,15 @@ class IngredientInput extends Component {
 
     addRow = () => {
         const ingredients = this.state.ingredients
-
         ingredients.push({name: '', quantity: ''})
         this.setState({ingredients: ingredients})
     }
 
-    deleteRow = () => {
+    deleteRow = (index, event) => {
+        event.preventDefault();
         const ingredients = this.state.ingredients
+        ingredients.splice(index,1)
+        this.setState({ingredients: ingredients})
     }
 
     render() {
@@ -38,14 +40,16 @@ class IngredientInput extends Component {
                         <tr>
                             <th>Name</th>
                             <th>Quantity</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         {this.state.ingredients.map((ingredient, index) => {
                             return (
                                 <tr key={'ingredient-' + index}>
-                                    <td><input type="text" className="form-control" onChange={(event) => this.handleChange(index, "name", event)} value={this.props.value} placeholder="ex. Flour" /></td>
-                                    <td><input type="text" className="form-control" onChange={(event) => this.handleChange(index, "quantity", event)} value={this.props.value} placeholder="ex. 2 cups" /></td>
+                                    <td><input type="text" className="form-control" onChange={(event) => this.handleChange(index, "name", event)} value={ingredient.name} placeholder="ex. Flour" /></td>
+                                    <td><input type="text" className="form-control" onChange={(event) => this.handleChange(index, "quantity", event)} value={ingredient.quantity} placeholder="ex. 2 cups" /></td>
+                                    <td><button id="deleteRow" className="btn btn-light btn-sm" onClick={(event) => this.deleteRow(index, event)}>Delete</button></td>
                                 </tr>
                             )
                         })}
