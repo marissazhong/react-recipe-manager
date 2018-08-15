@@ -3,7 +3,7 @@ import React from 'react';
 import NavBar from '../components/NavBar';
 import RecipeList from '../components/recipes/RecipeList';
 
-const AllRecipesPage = ({match, recipes}) => {
+const AllRecipesPage = ({recipes}) => {
     return(
         <div className="container-fluid">
             <NavBar />

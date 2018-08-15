@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 
 import TextInput from './TextInput'
-import { addRecipe } from '../../actions/recipes'
 
 class RecipeForm extends Component {
-
-    state = {
-        name: '', prepTime: '', cookTime: '', ingredients: '', directions: ''
+    
+    state = { // need to build out user functionality
+        userId: 0, name: '', prepTime: '', cookTime: '', ingredients: '', directions: ''
     }
 
     handleChange(field, event) {
@@ -40,5 +38,5 @@ class RecipeForm extends Component {
         )}
 }
 
-export default connect(state => ({ recipes: state.recipes }), { addRecipe })(RecipeForm);
+export default RecipeForm;
 
