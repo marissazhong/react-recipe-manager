@@ -1,16 +1,10 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import React from 'react';
 
 import NavBar from '../components/NavBar';
 import RecipeList from '../components/recipes/RecipeList';
 import RecipeForm from '../components/recipes/RecipeForm';
 
-class UserRecipesPage extends Component {
-
-    render() {
-        const currentUser = 0;
-        const userRecipes = this.props.recipes.filter(recipe => recipe.userId === currentUser);
-
+const UserRecipesPage = ({match, userRecipes}) => {
         return(
             <div className="container-fluid">
                 <NavBar />
@@ -26,13 +20,6 @@ class UserRecipesPage extends Component {
                 </div>
             </div>
         )
-    }
 }
 
-const mapStateToProps = state => {
-    return {
-      recipes: state.recipes
-    }
-  }
-
-export default connect(mapStateToProps)(UserRecipesPage);
+export default UserRecipesPage;

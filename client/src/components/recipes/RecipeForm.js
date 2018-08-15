@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import TextInput from './TextInput'
+import { addRecipe } from '../../actions/recipes'
 
 class RecipeForm extends Component {
 
@@ -39,17 +40,5 @@ class RecipeForm extends Component {
         )}
 }
 
-const mapStateToProps = state => {
-    return {
-        recipe: this.state
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-        addRecipe: recipe => dispatch({ type: "ADD_RECIPE", payload: recipe })
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(RecipeForm);
+export default connect(state => ({ recipes: state.recipes }), { addRecipe })(RecipeForm);
 

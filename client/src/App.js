@@ -10,16 +10,20 @@ import RecipeShow from './components/recipes/RecipeShow';
 class App extends Component {
 
   render() {
+    const currentUser = 0;
+    const userRecipes = this.props.recipes.filter(recipe => recipe.userId === currentUser);
     return (
+
       <Router>
-        <div className="app">
-          <Route exact path="/login" component={LoginPage} />
-          <Route exact path="/" render={routerProps => <AllRecipesPage {...routerProps} recipes={this.props.recipes} />} />
-          <Route exact path="/recipes" render={routerProps => <UserRecipesPage  />} />
-          <Route path="/recipes/:recipeId" render={routerProps => <RecipeShow {...routerProps} recipes={this.props.recipes} />}/>
-          <Route exact path="/recipe" component={RecipeShow} />
-        </div>
+          <div className="app">
+            <Route exact path="/login" component={LoginPage} />
+            <Route exact path="/" render={routerProps => <AllRecipesPage {...routerProps} recipes={this.props.recipes} />} />
+            <Route exact path="/recipes" render={routerProps => <UserRecipesPage {...routerProps} userRecipes={userRecipes} />} />
+              <Route exact path="/recipes/:recipeId" render={routerProps => <RecipeShow {...routerProps} recipes={this.props.recipes} />}/>
+            <Route exact path="/recipe" component={RecipeShow} />
+          </div>
       </Router>
+
     );
   }
 }
