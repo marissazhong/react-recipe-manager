@@ -6,7 +6,6 @@ import LoginPage from './containers/LoginPage';
 import AllRecipesPage from './containers/AllRecipesPage';
 import UserRecipesPage from './containers/UserRecipesPage';
 import RecipePage from './containers/RecipePage';
-import RecipeShow from './components/recipes/RecipeShow';
 
 class App extends Component {
 
@@ -17,7 +16,7 @@ class App extends Component {
             <Route exact path="/login" component={LoginPage} />
             <Route exact path="/" render={routerProps => <AllRecipesPage {...routerProps} recipes={this.props.recipes} />} />
             <Route exact path="/recipes" render={routerProps => <UserRecipesPage {...routerProps} />} />
-              <Route exact path="/recipes/:recipeId" render={routerProps => <RecipePage {...routerProps} recipes={this.props.recipes} />}/>
+              <Route exact path="/recipes/:recipeName" render={routerProps => <RecipePage {...routerProps} recipes={this.props.recipes} />}/>
           </div>
       </Router>
     );

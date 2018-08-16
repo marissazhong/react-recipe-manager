@@ -17,11 +17,11 @@ function loadImage(recipe) {
 class RecipeList extends React.Component {
   render() {
     const recipes = this.props.recipes;
-    const renderRecipes = Object.keys(recipes).map(recipeID =>
-        <Link key={recipeID} className="card" to={`recipes/${recipeID}`} style={{ width: '240px', margin: '20px' }}>
-          <img className="card-img-top" src={Images[loadImage(recipes[recipeID])]} alt={recipes[recipeID].name} />
+    const renderRecipes = Object.values(recipes).map(recipe =>
+        <Link key={slug(recipe.name)} className="card" to={`recipes/${slug(recipe.name)}`} style={{ width: '240px', margin: '20px' }}>
+          <img className="card-img-top" src={Images[loadImage(recipe)]} alt={recipe.name} />
           <div className="card-body">
-          <h6 className="card-title">{recipes[recipeID].name}</h6>
+          <h6 className="card-title">{recipe.name}</h6>
           </div>
         </Link>
     );

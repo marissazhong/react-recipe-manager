@@ -18,8 +18,7 @@ class RecipeShow extends Component {
   render() {
     const match = this.props.match;
     const recipes = this.props.recipes;
-    const recipe = recipes[match.params.recipeId];
-    let showEditForm = false;
+    const recipe = recipes.find(recipe => slug(recipe.name) === match.params.recipeName);
     return (
       <div>
       <div className="container-fluid" style={{margin: '20px'}}>
