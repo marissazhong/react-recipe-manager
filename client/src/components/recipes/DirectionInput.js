@@ -4,7 +4,7 @@ import update from 'react-addons-update';
 class DirectionInput extends Component {
 
     state = {
-        directions: ['']
+        directions: this.props.directions
     }
 
     handleChange(index, event) {

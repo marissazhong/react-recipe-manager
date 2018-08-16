@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import update from 'react-addons-update';
 
 class IngredientInput extends Component {
-
     state = {
-        ingredients: [{name: '', quantity: ''}]
+        ingredients: this.props.ingredients
     }
 
     handleChange(index, field, event) {

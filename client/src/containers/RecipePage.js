@@ -3,6 +3,10 @@ import NavBar from '../components/NavBar';
 import RecipeShow from '../components/recipes/RecipeShow'
 import RecipeInput from '../components/recipes/RecipeInput'
 
+function slug(string) {
+    return string.toLowerCase().replace(/\s/g,'-');
+  }
+
 class RecipePage extends Component {
 
     state = {
@@ -16,13 +20,14 @@ class RecipePage extends Component {
     }
 
     render() {
+        const recipe = this.props.recipes.find(recipe => slug(recipe.name) === this.props.match.params.recipeName);
         const RecipeEditInput = () => {
             if (this.state.showEditForm) {
                 return (
                     <div className="col-4">
                         <div className="card" style={{padding: '0px 20px 20px 20px'}}>
                             <h3>Edit Recipe</h3>
-                            <RecipeInput addRecipe={this.props.addRecipe} buttonValue={"Save"}/>
+                            <RecipeInput recipe={recipe} addRecipe={this.props.addRecipe} buttonValue={"Save"}/>
                         </div>
                     </div>
                 )

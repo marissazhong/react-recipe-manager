@@ -9,6 +9,7 @@ class UserRecipesPage extends Component {
     render() {
         const currentUser = 0;
         const userRecipes = this.props.recipes.filter(recipe => recipe.userId === currentUser);
+        const newRecipe = {userId: 0, name: '', prepTime: '', cookTime: '', ingredients: [''], directions: ['']}
         return(
             <div className="container-fluid">
                 <NavBar />
@@ -20,7 +21,7 @@ class UserRecipesPage extends Component {
                     <div className="col-4">
                         <div className="card" style={{padding: '0px 20px 20px 20px'}}>
                             <h3>New Recipe</h3>
-                            <RecipeInput addRecipe={this.props.addRecipe} buttonValue={"Create Recipe"}/>
+                            <RecipeInput recipe={newRecipe} addRecipe={this.props.addRecipe} buttonValue={"Create Recipe"}/>
                         </div>
                     </div>
                 </div>
