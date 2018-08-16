@@ -19,7 +19,7 @@ class UserRecipesPage extends Component {
                     </div>
                     <div className="col-4">
                         <h3>New Recipe</h3>
-                        <RecipeInput addRecipe={this.props.addRecipe} />
+                        <RecipeInput addRecipe={this.props.addRecipe} buttonValue={"Create New Recipe"}/>
                     </div>
                 </div>
             </div>

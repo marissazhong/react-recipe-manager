@@ -47,7 +47,7 @@ class RecipeInput extends Component {
                     <TextInput label="Cook Time" onChange={(event) => this.handleChange("cookTime", event)}/>
                     <IngredientInput updateIngredients={this.updateIngredients} />
                     <DirectionInput updateDirections={this.updateDirections}/>
-                    <button type="submit" className="btn btn-primary">Create New Recipe</button>
+                    <button type="submit" className="btn btn-primary">{this.props.buttonValue}</button>
                 </form>
             </div>
         )}

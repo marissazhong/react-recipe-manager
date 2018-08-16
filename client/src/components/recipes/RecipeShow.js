@@ -1,7 +1,5 @@
-import React from 'react';
-import NavBar from '../NavBar';
+import React, { Component } from 'react';
 import Images from '../../images/ImportImages';
-import RecipeInput from './RecipeInput';
 
 function slug(string) {
   return string.toLowerCase().replace(/\s/g,'-');
@@ -15,29 +13,28 @@ function loadImage(recipe) {
   }
 }
 
-class RecipeShow extends React.Component {
+class RecipeShow extends Component {
   render() {
     const match = this.props.match;
     const recipes = this.props.recipes;
     const recipe = recipes[match.params.recipeId];
     return (
       <div>
-      <div className="container-fluid"><NavBar /></div>
       <div className="container-fluid" style={{margin: '20px'}}>
         <div className="row">
-          <div className="col-2">
-            <img src={Images[loadImage(recipe)]} alt={recipe.name} width="180px" />
-          </div>
-          <div className="col-8">
-            <h1>{recipe.name}</h1>
-            <h5 style={{margin: '10px'}}>Prep Time: {recipe.prepTime} minutes</h5>
-            <h5 style={{margin: '10px'}}>Cook Time: {recipe.cookTime} minutes</h5>
-            <button style={{margin: '10px'}}type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Edit Recipe</button>
-          </div>
-        </div>
+            <div className="col-3">
+              <img src={Images[loadImage(recipe)]} alt={recipe.name} width="180px" />
+            </div>
+            <div className="col-8" style={{marginLeft: '20px'}}>
+              <h1>{recipe.name}</h1>
+              <h5 style={{margin: '10px'}}>Prep Time: {recipe.prepTime} minutes</h5>
+              <h5 style={{margin: '10px'}}>Cook Time: {recipe.cookTime} minutes</h5>
+              <button style={{margin: '10px'}} type="button" className="btn btn-primary" onClick={this.handleEditClick}>Edit Recipe</button>
+            </div>
+        </div> {/* end of header row */}
         <br />
         <div className="row">
-          <div className="col-3">
+          <div className="col-5">
             <h2>Ingredients:</h2>
             <table className="table" style={{width: '300px'}}>
               <thead>
@@ -56,7 +53,7 @@ class RecipeShow extends React.Component {
               </tbody>
             </table>
           </div>
-          <div className="col-8">
+          <div className="col-6">
             <h2>Directions:</h2>
             <table className="table-sm" style={{width: '400px'}}>
                 <tbody>
@@ -68,9 +65,9 @@ class RecipeShow extends React.Component {
                 </tbody>
             </table>
           </div>
-        </div>
-      </div>
-      </div>
+        </div> {/* end of Ingredients and Directions row */}
+      </div> {/* end of show recipe container */}
+    </div> 
     )
   }
 }
