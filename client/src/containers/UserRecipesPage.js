@@ -18,8 +18,10 @@ class UserRecipesPage extends Component {
                         <RecipeList recipes={userRecipes}/>
                     </div>
                     <div className="col-4">
-                        <h3>New Recipe</h3>
-                        <RecipeInput addRecipe={this.props.addRecipe} buttonValue={"Create New Recipe"}/>
+                        <div className="card" style={{padding: '0px 20px 20px 20px'}}>
+                            <h3>New Recipe</h3>
+                            <RecipeInput addRecipe={this.props.addRecipe} buttonValue={"Create Recipe"}/>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -14,10 +14,12 @@ function loadImage(recipe) {
 }
 
 class RecipeShow extends Component {
+
   render() {
     const match = this.props.match;
     const recipes = this.props.recipes;
     const recipe = recipes[match.params.recipeId];
+    let showEditForm = false;
     return (
       <div>
       <div className="container-fluid" style={{margin: '20px'}}>
@@ -29,7 +31,7 @@ class RecipeShow extends Component {
               <h1>{recipe.name}</h1>
               <h5 style={{margin: '10px'}}>Prep Time: {recipe.prepTime} minutes</h5>
               <h5 style={{margin: '10px'}}>Cook Time: {recipe.cookTime} minutes</h5>
-              <button style={{margin: '10px'}} type="button" className="btn btn-primary" onClick={this.handleEditClick}>Edit Recipe</button>
+              <button style={{margin: '10px'}} type="button" className="btn btn-primary" onClick={this.props.handleEditClick}>Edit Recipe</button>
             </div>
         </div> {/* end of header row */}
         <br />
