@@ -5,9 +5,11 @@ import IngredientInput from './IngredientInput'
 import DirectionInput from './DirectionInput'
 
 class RecipeInput extends Component {
-    
-    state = { // need to build out user functionality
-        userId: 0, name: '', prepTime: '', cookTime: '', ingredients: '', directions: ''
+    constructor(props) {
+        super(props)
+        this.state = {
+            recipe: this.props.recipe
+        }
     }
 
     handleChange(field, event) {
@@ -41,9 +43,9 @@ class RecipeInput extends Component {
         return(
             <div>
                 <form onSubmit={(event) => this.handleOnSubmit(event)}>
-                    <TextInput label="Name" value={this.props.recipe.name} onChange={(event) => this.handleChange("name", event)} />
-                    <TextInput label="Prep Time" value={this.props.recipe.prepTime} onChange={(event) => this.handleChange("prepTime", event)}/>
-                    <TextInput label="Cook Time" value={this.props.recipe.cookTime} onChange={(event) => this.handleChange("cookTime", event)}/>
+                    <TextInput label="Name" onChange={(event) => this.handleChange("name", event)} />
+                    <TextInput label="Prep Time" onChange={(event) => this.handleChange("prepTime", event)}/>
+                    <TextInput label="Cook Time" onChange={(event) => this.handleChange("cookTime", event)}/>
                     <IngredientInput ingredients={this.props.recipe.ingredients} updateIngredients={this.updateIngredients} />
                     <DirectionInput directions={this.props.recipe.directions} updateDirections={this.updateDirections}/>
                     <button type="submit" className="btn btn-primary">{this.props.buttonValue}</button>

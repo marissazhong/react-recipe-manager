@@ -9,7 +9,7 @@ class UserRecipesPage extends Component {
     render() {
         const currentUser = 0;
         const userRecipes = this.props.recipes.filter(recipe => recipe.userId === currentUser);
-        const newRecipe = {userId: 0, name: '', prepTime: '', cookTime: '', ingredients: [''], directions: ['']}
+        const newRecipe = {userId: 0, name: '', prepTime: '', cookTime: '', ingredients: [{name: '', quantity: ''}], directions: ['']}
         return(
             <div className="container-fluid">
                 <NavBar />
