@@ -27,7 +27,7 @@ class RecipeList extends React.Component {
     );
     return (
       <div className="container">
-        <div className="row">
+        <div className="row justify-content-center">
          {renderRecipes}
         </div>
       </div>

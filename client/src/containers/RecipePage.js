@@ -24,8 +24,8 @@ class RecipePage extends Component {
         const RecipeEditInput = () => {
             if (this.state.showEditForm) {
                 return (
-                    <div className="col-4">
-                        <div className="card" style={{padding: '0px 20px 20px 20px'}}>
+                    <div className="col-5">
+                        <div className="card" style={{margin: '20px', padding: '0px 20px 20px 20px'}}>
                             <h3>Edit Recipe</h3>
                             <RecipeInput recipe={recipe} addRecipe={this.props.addRecipe} buttonValue={"Save"}/>
                         </div>
@@ -33,7 +33,7 @@ class RecipePage extends Component {
                 )
             } else {
                 return (
-                    <div className="col-4">
+                    <div className="col">
                     </div>
                 )
             }

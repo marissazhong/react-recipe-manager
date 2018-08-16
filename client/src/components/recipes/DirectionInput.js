@@ -32,10 +32,10 @@ class DirectionInput extends Component {
     render() {
         return(
             <div className="form-group row">
-                <div className="col-sm-4">
+                <div className="col-sm-2">
                     <label>Directions: </label>
                 </div>
-                <div className="col-sm-8">
+                <div className="col-sm-10">
                     <table className="table-sm">        
                     <tbody>
                         {this.state.directions.map((direction, index) => {
@@ -43,7 +43,7 @@ class DirectionInput extends Component {
                                 <tr key={'direction-' + index}>
                                     <td style={{width: '5%'}}>{index+1}.</td>
                                     <td style={{width: '90%'}}>
-                                        <input type="text" className="form-control" onChange={(event) => this.handleChange(index, event)} value={direction} placeholder="ex. Mix ingredients" />
+                                        <input type="textarea" className="form-control" onChange={(event) => this.handleChange(index, event)} value={direction} placeholder="ex. Mix ingredients" />
                                     </td>
                                     <td style={{width: '5%'}}><button id="deleteRow" className="btn btn-light btn-sm" onClick={(event) => this.deleteRow(index, event)}>Delete</button></td>
                                 </tr>
