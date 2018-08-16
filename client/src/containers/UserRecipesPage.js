@@ -16,7 +16,8 @@ class UserRecipesPage extends Component {
                 <div className="row">
                     <div className="col-7">
                         <h3>Your Recipes</h3>
-                        <RecipeList recipes={userRecipes}/>
+                        <RecipeList recipes={userRecipes} deleteRecipe={this.props.deleteRecipe} />
+                        {console.log(userRecipes)}
                     </div>
                     <div className="col-5">
                         <div className="card" style={{margin: '20px', padding: '0px 20px 20px 20px'}}>
@@ -34,6 +35,7 @@ const mapStateToProps = state => ({ recipes: state.recipes })
 
 const mapDispatchToProps = dispatch => ({
     addRecipe: recipe => dispatch({type: 'ADD_RECIPE', recipe}),
+    deleteRecipe: recipe => dispatch({type: 'DELETE_RECIPE', recipe})
   })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserRecipesPage);

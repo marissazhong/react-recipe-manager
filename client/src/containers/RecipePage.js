@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom'
+
 import NavBar from '../components/NavBar';
 import RecipeShow from '../components/recipes/RecipeShow'
 import RecipeInput from '../components/recipes/RecipeInput'
@@ -10,13 +12,26 @@ function slug(string) {
 class RecipePage extends Component {
 
     state = {
-        showEditForm: false
+        showEditForm: false,
+        redirect: false
     }
 
     handleEditClick() {
         this.setState({
             showEditForm: !this.state.showEditForm
         })
+    }
+
+    deleteOnClick() {
+        this.setState({
+            redirect: true
+        })
+    }
+
+    renderRedirect() {
+        if (this.state.redirect) {
+            return <Redirect to='/' />
+        }
     }
 
     render() {
@@ -44,7 +59,8 @@ class RecipePage extends Component {
                 <NavBar />
                 <div className="row">
                     <div className="col-7">
-                        <RecipeShow handleEditClick={this.handleEditClick.bind(this)} recipes={this.props.recipes} match={this.props.match}/>
+                        {this.renderRedirect()}
+                        <RecipeShow handleEditClick={this.handleEditClick.bind(this)} deleteOnClick={this.deleteOnClick.bind(this)} recipes={this.props.recipes} match={this.props.match}/>
                     </div>
                     <RecipeEditInput />
                 </div>

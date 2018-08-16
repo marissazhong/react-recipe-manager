@@ -7,9 +7,7 @@ import DirectionInput from './DirectionInput'
 class RecipeInput extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            recipe: this.props.recipe
-        }
+        this.state = this.props.recipe
     }
 
     handleChange(field, event) {
@@ -34,7 +32,7 @@ class RecipeInput extends Component {
         event.preventDefault();
         this.props.addRecipe(this.state);
         this.setState({
-            name: '', prepTime: '', cookTime: '', ingredients: '', directions: ''
+            userId: 0, name: '', prepTime: '', cookTime: '', ingredients: '', directions: ''
         });
         event.target.reset();
     }

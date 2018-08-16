@@ -8,6 +8,8 @@ const AllRecipesPage = ({recipes}) => {
         <div className="container-fluid">
             <NavBar />
             <h3>Today's Featured Recipes</h3>
+            {console.log(recipes)}
+
             <RecipeList recipes={recipes}/>
         </div>
     )
