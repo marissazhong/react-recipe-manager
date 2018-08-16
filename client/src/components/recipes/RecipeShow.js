@@ -7,60 +7,72 @@ function slug(string) {
   return string.toLowerCase().replace(/\s/g,'-');
 }
 
-const RecipeShow = ({match, recipes}) => {
-  const recipe = recipes[match.params.recipeId];
-  return (
-    <div>
-    <div className="container-fluid"><NavBar /></div>
-    <div className="container-fluid" style={{margin: '20px'}}>
-      <div className="row">
-        <div className="col-2">
-          <img src={Images[slug(recipe.name) + '.jpg']} alt={recipe.name} width="180px"/>
+function loadImage(recipe) {
+  if (Images[slug(recipe.name) + '.jpg']) {
+    return slug(recipe.name) + '.jpg'
+  } else {
+    return 'defaultRecipe.jpg'
+  }
+}
+
+class RecipeShow extends React.Component {
+  render() {
+    const match = this.props.match;
+    const recipes = this.props.recipes;
+    const recipe = recipes[match.params.recipeId];
+    return (
+      <div>
+      <div className="container-fluid"><NavBar /></div>
+      <div className="container-fluid" style={{margin: '20px'}}>
+        <div className="row">
+          <div className="col-2">
+            <img src={Images[loadImage(recipe)]} alt={recipe.name} width="180px" />
+          </div>
+          <div className="col-8">
+            <h1>{recipe.name}</h1>
+            <h5 style={{margin: '10px'}}>Prep Time: {recipe.prepTime} minutes</h5>
+            <h5 style={{margin: '10px'}}>Cook Time: {recipe.cookTime} minutes</h5>
+            <button style={{margin: '10px'}}type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Edit Recipe</button>
+          </div>
         </div>
-        <div className="col-8">
-          <h1>{recipe.name}</h1>
-          <h5 style={{margin: '10px'}}>Prep Time: {recipe.prepTime} minutes</h5>
-          <h5 style={{margin: '10px'}}>Cook Time: {recipe.cookTime} minutes</h5>
-          <button style={{margin: '10px'}}type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Edit Recipe</button>
-        </div>
-      </div>
-      <br />
-      <div className="row">
-        <div className="col-3">
-          <h2>Ingredients:</h2>
-          <table className="table" style={{width: '300px'}}>
-            <thead>
-              <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Quantity</th>
-              </tr>
-            </thead>
-            <tbody>
-              {recipe.ingredients.map(function(ingred,i) {
-                return (<tr key={slug(ingred.name)}>
-                  <td>{ingred.name.slice(0,1).toUpperCase() + ingred.name.slice(1)}</td>
-                  <td>{ingred.quantity}</td>
-                </tr>)
-              })}
-            </tbody>
-          </table>
-        </div>
-        <div className="col-8">
-          <h2>Directions:</h2>
-          <table className="table-sm" style={{width: '400px'}}>
+        <br />
+        <div className="row">
+          <div className="col-3">
+            <h2>Ingredients:</h2>
+            <table className="table" style={{width: '300px'}}>
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Quantity</th>
+                </tr>
+              </thead>
               <tbody>
-                {recipe.directions.map(function(direction,i) {
-                      return (<tr key={i}>
-                        <td>{i+1}. {direction}</td>
-                      </tr>)
+                {recipe.ingredients.map(function(ingred,i) {
+                  return (<tr key={slug(ingred.name)}>
+                    <td>{ingred.name.slice(0,1).toUpperCase() + ingred.name.slice(1)}</td>
+                    <td>{ingred.quantity}</td>
+                  </tr>)
                 })}
               </tbody>
-          </table>
+            </table>
+          </div>
+          <div className="col-8">
+            <h2>Directions:</h2>
+            <table className="table-sm" style={{width: '400px'}}>
+                <tbody>
+                  {recipe.directions.map(function(direction,i) {
+                        return (<tr key={i}>
+                          <td>{i+1}. {direction}</td>
+                        </tr>)
+                  })}
+                </tbody>
+            </table>
+          </div>
         </div>
       </div>
-    </div>
-    </div>
-  )
+      </div>
+    )
+  }
 }
 
 export default RecipeShow;
