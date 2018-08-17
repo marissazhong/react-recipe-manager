@@ -2,6 +2,8 @@ import { recipes } from '../data';
 
 export default function recipesReducer(state = recipes, action) {
   switch (action.type) {
+    case 'LOAD_RECIPES':
+      return action.recipes
     case 'ADD_RECIPE':
       return [...state, action.recipe];
     case 'DELETE_RECIPE':

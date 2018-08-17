@@ -10,6 +10,11 @@ class RecipesController < ApplicationController
         redirect_to user_path(@user) # user home page
     end
 
+    def allrecipes
+        @recipes=Recipe.all
+        render json: @recipes, status: 201
+    end
+
     # shows individual recipe
     def show
     end
