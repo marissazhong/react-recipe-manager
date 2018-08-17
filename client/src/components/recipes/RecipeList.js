@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+
 import Images from '../../images/ImportImages';
 
 function slug(string) {
@@ -16,8 +18,17 @@ function loadImage(recipe) {
 
 class RecipeList extends React.Component {
 
+  renderRecipeIndex() {
+    const currentUser = 0;
+    if (this.props.fromUser === true) {
+      return this.props.recipes.filter(recipe => recipe.userId === currentUser);
+    } else {
+      return this.props.recipes
+    }
+  }
+
   render() {
-    const recipes = this.props.recipes;
+    const recipes = this.renderRecipeIndex();
     const renderRecipes = Object.values(recipes).map(recipe =>
         <Link key={slug(recipe.name)} className="card" to={`recipes/${slug(recipe.name)}`} style={{ width: '240px', margin: '20px' }}>
           <img className="card-img-top" src={Images[loadImage(recipe)]} alt={recipe.name} />
@@ -35,5 +46,7 @@ class RecipeList extends React.Component {
     );
   }
 };
+
+const mapStateToProps = state => ({ recipes: state.recipes })
  
-export default RecipeList;
+export default connect(mapStateToProps)(RecipeList);

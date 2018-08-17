@@ -5,7 +5,7 @@ export default function recipesReducer(state = recipes, action) {
     case 'ADD_RECIPE':
       return [...state, action.recipe];
     case 'DELETE_RECIPE':
-      console.log(action) 
+      return state.filter(recipe => recipe.name !== action.recipe.name);
     default:
       return state;
   }

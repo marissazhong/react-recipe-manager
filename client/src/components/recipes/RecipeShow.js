@@ -31,7 +31,7 @@ class RecipeShow extends Component {
               <h5 style={{margin: '10px'}}>Prep Time: {recipe.prepTime} minutes</h5>
               <h5 style={{margin: '10px'}}>Cook Time: {recipe.cookTime} minutes</h5>
               <button style={{margin: '10px'}} type="button" className="btn btn-outline-secondary btn-sm" onClick={this.props.handleEditClick}>Edit Recipe</button>
-              <button type="button" className="btn btn-outline-secondary btn-sm" onClick={this.props.deleteOnClick}>Delete Recipe</button>
+              <button type="button" className="btn btn-outline-secondary btn-sm" onClick={(event) => this.props.deleteOnClick(recipe)}>Delete Recipe</button>
             </div>
         </div> {/* end of header row */}
         <br />

@@ -14,7 +14,7 @@ class App extends Component {
       <Router>
           <div className="app">
             <Route exact path="/login" component={LoginPage} />
-            <Route exact path="/" render={routerProps => <AllRecipesPage {...routerProps} recipes={this.props.recipes} />} />
+            <Route exact path="/" component={AllRecipesPage} />
             <Route exact path="/recipes" render={routerProps => <UserRecipesPage {...routerProps} />} />
               <Route exact path="/recipes/:recipeName" render={routerProps => <RecipePage {...routerProps} recipes={this.props.recipes} />}/>
           </div>
