@@ -5,10 +5,7 @@ import { Redirect } from 'react-router-dom'
 import NavBar from '../components/NavBar';
 import RecipeShow from '../components/recipes/RecipeShow'
 import RecipeInput from '../components/recipes/RecipeInput'
-
-function slug(string) {
-    return string.toLowerCase().replace(/\s/g,'-');
-  }
+import { slug } from '../helpers';
 
 class RecipePage extends Component {
 

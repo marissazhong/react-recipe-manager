@@ -1,17 +1,6 @@
 import React, { Component } from 'react';
 import Images from '../../images/ImportImages';
-
-function slug(string) {
-  return string.toLowerCase().replace(/\s/g,'-');
-}
-
-function loadImage(recipe) {
-  if (Images[slug(recipe.name) + '.jpg']) {
-    return slug(recipe.name) + '.jpg'
-  } else {
-    return 'defaultRecipe.jpg'
-  }
-}
+import { slug, loadImage } from '../../helpers';
 
 class RecipeShow extends Component {
 

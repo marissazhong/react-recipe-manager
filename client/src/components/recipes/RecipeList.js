@@ -3,28 +3,29 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Images from '../../images/ImportImages';
-
-function slug(string) {
-  return string.toLowerCase().replace(/\s/g,'-');
-}
-
-function loadImage(recipe) {
-  if (Images[slug(recipe.name) + '.jpg']) {
-    return slug(recipe.name) + '.jpg'
-  } else {
-    return 'defaultRecipe.jpg'
-  }
-}
+import { slug, loadImage } from '../../helpers';
 
 class RecipeList extends React.Component {
 
   renderRecipeIndex() {
     const currentUser = 0;
+    let recipes;
     if (this.props.fromUser === true) {
-      return this.props.recipes.filter(recipe => recipe.userId === currentUser);
+      recipes = this.props.recipes.filter(recipe => recipe.userId === currentUser)
     } else {
-      return this.props.recipes
+      recipes = this.props.recipes
     }
+    return recipes.sort(function(a, b) {
+      var nameA = a.name.toUpperCase(); 
+      var nameB = b.name.toUpperCase();
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
+    })
   }
 
   render() {
