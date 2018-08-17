@@ -46,9 +46,9 @@ class RecipeInput extends Component {
         return(
             <div>
                 <form onSubmit={(event) => this.handleOnSubmit(event)}>
-                    <TextInput label="Name" onChange={(event) => this.handleChange("name", event)} />
-                    <TextInput label="Prep Time" onChange={(event) => this.handleChange("prepTime", event)}/>
-                    <TextInput label="Cook Time" onChange={(event) => this.handleChange("cookTime", event)}/>
+                    <TextInput label="Name" onChange={(event) => this.handleChange("name", event)} value={this.state.name}/>
+                    <TextInput label="Prep Time" onChange={(event) => this.handleChange("prepTime", event)} value={this.state.prepTime} />
+                    <TextInput label="Cook Time" onChange={(event) => this.handleChange("cookTime", event)} value={this.state.cookTime}/>
                     <IngredientInput ingredients={this.props.recipe.ingredients} onChange={(index, field, value) => this.updateIngredients(index, field, value)} changeRow={(event) => this.changeRow("ingredients", event)} />
                     <DirectionInput directions={this.props.recipe.directions} onChange={(index, value) => this.updateDirections(index, value)} changeRow={(event) => this.changeRow("directions", event)}/>
                     <button type="submit" className="btn btn-primary">{this.props.buttonValue}</button>
