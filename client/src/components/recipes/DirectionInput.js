@@ -12,7 +12,7 @@ class DirectionInput extends Component {
         this.setState({
             directions: update(this.state.directions, {[index]: {$set: direction}})
         })
-        this.props.updateDirections(this.state.directions)
+        this.props.onChange(index, direction)
     }
 
     addRow = (event) => {
@@ -20,6 +20,7 @@ class DirectionInput extends Component {
         const directions = this.state.directions
         directions.push('')
         this.setState({directions: directions})
+        this.props.changeRow(this.state);
     }
 
     deleteRow = (index, event) => {
@@ -27,6 +28,7 @@ class DirectionInput extends Component {
         const directions = this.state.directions
         directions.splice(index,1)
         this.setState({directions: directions})
+        this.props.changeRow(this.state);
     }
 
     render() {

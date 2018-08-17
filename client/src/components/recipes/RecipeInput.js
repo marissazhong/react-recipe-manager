@@ -23,9 +23,13 @@ class RecipeInput extends Component {
         })
     }
 
-    updateDirections = (directions) => {
+    changeRow(field, state) {
+        this.setState({[field]: state[field]})
+    }
+
+    updateDirections(index, direction) {
         this.setState({
-            directions: directions
+            directions: update(this.state.directions, {[index]: {$set: direction}})
         })
     }
 
@@ -45,8 +49,8 @@ class RecipeInput extends Component {
                     <TextInput label="Name" onChange={(event) => this.handleChange("name", event)} />
                     <TextInput label="Prep Time" onChange={(event) => this.handleChange("prepTime", event)}/>
                     <TextInput label="Cook Time" onChange={(event) => this.handleChange("cookTime", event)}/>
-                    <IngredientInput ingredients={this.props.recipe.ingredients} onChange={(index, field, value) => this.updateIngredients(index, field, value)} />
-                    <DirectionInput directions={this.props.recipe.directions} updateDirections={this.updateDirections}/>
+                    <IngredientInput ingredients={this.props.recipe.ingredients} onChange={(index, field, value) => this.updateIngredients(index, field, value)} changeRow={(event) => this.changeRow("ingredients", event)} />
+                    <DirectionInput directions={this.props.recipe.directions} onChange={(index, value) => this.updateDirections(index, value)} changeRow={(event) => this.changeRow("directions", event)}/>
                     <button type="submit" className="btn btn-primary">{this.props.buttonValue}</button>
                 </form>
             </div>
