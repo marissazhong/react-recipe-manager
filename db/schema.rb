@@ -10,47 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180806121226) do
-
-  create_table "ingredients", force: :cascade do |t|
-    t.string "name"
-  end
-
-  create_table "ingredients_pantries", id: false, force: :cascade do |t|
-    t.integer "pantry_id", null: false
-    t.integer "ingredient_id", null: false
-  end
-
-  create_table "ingredients_recipes", id: false, force: :cascade do |t|
-    t.integer "ingredient_id", null: false
-    t.integer "recipe_id", null: false
-    t.string "input_name"
-    t.string "quantity"
-    t.index ["ingredient_id"], name: "index_ingredients_recipes_on_ingredient_id"
-    t.index ["recipe_id"], name: "index_ingredients_recipes_on_recipe_id"
-  end
-
-  create_table "pantries", force: :cascade do |t|
-    t.integer "user_id"
-  end
+ActiveRecord::Schema.define(version: 2) do
 
   create_table "recipes", force: :cascade do |t|
     t.string "name"
-    t.text "directions"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "prep_time"
-    t.integer "cook_time"
-    t.integer "user_id"
+    t.integer "userId"
+    t.integer "prepTime"
+    t.integer "cookTime"
+    t.string "directions"
+    t.string "ingredients"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
-    t.string "password_digest"
-    t.string "email"
-    t.string "name"
-    t.string "image_url"
-    t.integer "uid", limit: 8
+    t.string "password"
   end
 
 end
