@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import update from 'react-addons-update';
 
 import TextInput from './TextInput'
 import IngredientInput from './IngredientInput'
@@ -16,9 +17,9 @@ class RecipeInput extends Component {
         })
     }
 
-    updateIngredients = (ingredients) => {
+    updateIngredients(index, field, value) {
         this.setState({
-            ingredients: ingredients
+            ingredients: update(this.state.ingredients, {[index]: {[field]: {$set: value}}})
         })
     }
 
@@ -44,7 +45,7 @@ class RecipeInput extends Component {
                     <TextInput label="Name" onChange={(event) => this.handleChange("name", event)} />
                     <TextInput label="Prep Time" onChange={(event) => this.handleChange("prepTime", event)}/>
                     <TextInput label="Cook Time" onChange={(event) => this.handleChange("cookTime", event)}/>
-                    <IngredientInput ingredients={this.props.recipe.ingredients} updateIngredients={this.updateIngredients} />
+                    <IngredientInput ingredients={this.props.recipe.ingredients} onChange={(index, field, value) => this.updateIngredients(index, field, value)} />
                     <DirectionInput directions={this.props.recipe.directions} updateDirections={this.updateDirections}/>
                     <button type="submit" className="btn btn-primary">{this.props.buttonValue}</button>
                 </form>
