@@ -8,6 +8,8 @@ class RecipeShow extends Component {
     const match = this.props.match;
     const recipes = this.props.recipes;
     const recipe = recipes.find(recipe => slug(recipe.name) === match.params.recipeName);
+    const directions = JSON.parse(recipe.directions)
+    console.log(directions);
     return (
       <div>
       <div className="container-fluid" style={{margin: '20px'}}>
@@ -17,8 +19,8 @@ class RecipeShow extends Component {
             </div>
             <div className="col-8" style={{marginLeft: '20px'}}>
               <h1>{recipe.name}</h1>
-              <h5 style={{margin: '10px'}}>Prep Time: {recipe.prepTime} minutes</h5>
-              <h5 style={{margin: '10px'}}>Cook Time: {recipe.cookTime} minutes</h5>
+              <h5 style={{margin: '10px'}}>Prep Time: {recipe.prep_time} minutes</h5>
+              <h5 style={{margin: '10px'}}>Cook Time: {recipe.cook_time} minutes</h5>
               <button style={{margin: '10px'}} type="button" className="btn btn-outline-secondary btn-sm" onClick={this.props.handleEditClick}>Edit Recipe</button>
               <button type="button" className="btn btn-outline-secondary btn-sm" onClick={(event) => this.props.deleteOnClick(recipe)}>Delete Recipe</button>
             </div>
@@ -35,7 +37,7 @@ class RecipeShow extends Component {
                 </tr>
               </thead>
               <tbody>
-                {recipe.ingredients.map(function(ingred,i) {
+                {recipe.ingredients_recipes.map(function(ingred,i) {
                   return (<tr key={slug(ingred.name)}>
                     <td>{ingred.name.slice(0,1).toUpperCase() + ingred.name.slice(1)}</td>
                     <td>{ingred.quantity}</td>
@@ -48,7 +50,7 @@ class RecipeShow extends Component {
             <h2>Directions:</h2>
             <table className="table-sm" style={{width: '400px'}}>
                 <tbody>
-                  {recipe.directions.map(function(direction,i) {
+                  {directions.map(function(direction,i) {
                         return (<tr key={i}>
                           <td>{i+1}. {direction}</td>
                         </tr>)

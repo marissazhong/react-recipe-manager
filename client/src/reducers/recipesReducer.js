@@ -1,6 +1,4 @@
-import { recipes } from '../data';
-
-export default function recipesReducer(state = recipes, action) {
+export default function recipesReducer(state = [], action) {
   switch (action.type) {
     case 'LOAD_RECIPES':
       return action.recipes

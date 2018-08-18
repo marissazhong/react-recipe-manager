@@ -19,6 +19,8 @@ export function editRecipe() {
 
 }
 
-export function deleteRecipe() {
-
+export function deleteRecipe(recipe) {
+    return function(dispatch) {
+        return fetch('/')
+    }
 }
