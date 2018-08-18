@@ -5,7 +5,7 @@ export const addRecipe = (recipe) => {
 
 export function loadRecipes() {
     return function(dispatch) {
-        return fetch('/allrecipes')
+        return fetch('/recipes')
             .then(response => response.json())
             .then(recipes => dispatch({ type: 'LOAD_RECIPES', recipes}))
     }

@@ -27,6 +27,8 @@ gem 'omniauth-google-oauth2', '~> 0.2.1'
 gem 'dotenv-rails'
 gem 'pry'
 gem 'foreman', '~> 0.82.0'
+gem 'active_model_serializers'
+
 
 # bootstrap
 gem 'bootstrap-sass', '3.3.7'
