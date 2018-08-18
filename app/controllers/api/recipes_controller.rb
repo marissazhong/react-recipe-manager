@@ -1,4 +1,6 @@
+module Api
 class RecipesController < ApplicationController
+    before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
     # index page showing user's recipes and all recipes
     def index
@@ -8,10 +10,7 @@ class RecipesController < ApplicationController
 
     # shows individual recipe
     def show
-        respond_to do |format|
-            format.html { render :show }
-            format.json { render json: @recipe }
-        end
+        render json: @recipe
     end
 
     # creates new recipe
@@ -27,7 +26,6 @@ class RecipesController < ApplicationController
 
     end
 
-
     # updates recipe
     def update
         @recipe.update(recipe_params)
@@ -42,7 +40,8 @@ class RecipesController < ApplicationController
     # deletes recipe
     def destroy
         @recipe.destroy
-        redirect_to user_path(@user)
+        message = "Recipe successfully deleted"
+        render json: message
     end
 
     private
@@ -51,4 +50,5 @@ class RecipesController < ApplicationController
             params.require(:recipe).permit(:name, :prep_time, :cook_time, ingredients_recipes_attributes: [:name, :quantity])
         end
 
+end
 end

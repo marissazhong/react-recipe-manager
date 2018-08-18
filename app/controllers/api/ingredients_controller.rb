@@ -1,3 +1,4 @@
+module Api
 class IngredientsController < ApplicationController
 
     def index
@@ -13,4 +14,5 @@ class IngredientsController < ApplicationController
         @ingredient = Ingredient.create(name: params[:name])
     end
     
+end
 end

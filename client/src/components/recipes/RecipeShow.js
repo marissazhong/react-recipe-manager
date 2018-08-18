@@ -9,7 +9,6 @@ class RecipeShow extends Component {
     const recipes = this.props.recipes;
     const recipe = recipes.find(recipe => slug(recipe.name) === match.params.recipeName);
     const directions = JSON.parse(recipe.directions)
-    console.log(directions);
     return (
       <div>
       <div className="container-fluid" style={{margin: '20px'}}>

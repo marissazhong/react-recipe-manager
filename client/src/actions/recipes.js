@@ -21,6 +21,9 @@ export function editRecipe() {
 
 export function deleteRecipe(recipe) {
     return function(dispatch) {
-        return fetch('/')
+        return fetch(`/api/recipes/${recipe.id}`, {
+            method: "DELETE"
+        })
+        .then( () => dispatch({ type: 'DELETE_RECIPE', recipe}))
     }
 }
