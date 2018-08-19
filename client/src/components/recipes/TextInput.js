@@ -4,7 +4,7 @@ const TextInput = ({label, onChange, value}) => {
 
     return(
         <div className="form-group row">
-            <div className="col-sm-2">
+            <div className="col-sm-3">
                 <label>{label}: </label>
             </div>
             <div className="col-sm">

@@ -17,12 +17,7 @@ class UserRecipesPage extends React.Component {
                         <h3>Your Recipes</h3>
                         <RecipeList fromUser={true}/>
                     </div>
-                    <div className="col-5">
-                        <div className="card" style={{margin: '20px', padding: '0px 20px 20px 20px'}}>
-                            <h3>New Recipe</h3>
-                            <RecipeInput recipe={newRecipe} addRecipe={this.props.addRecipe} buttonValue={"Create Recipe"}/>
-                        </div>
-                    </div>
+                    <RecipeInput label={"New Recipe"} recipe={newRecipe} addRecipe={this.props.addRecipe}/>
                 </div>
             </div>
         )

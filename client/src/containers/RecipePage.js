@@ -6,22 +6,14 @@ import NavBar from '../components/NavBar';
 import RecipeShow from '../components/recipes/RecipeShow'
 import RecipeInput from '../components/recipes/RecipeInput'
 import { slug } from '../helpers';
-import { loadRecipes, deleteRecipe, editRecipe } from '../actions/recipes';
+import { deleteRecipe, editRecipe } from '../actions/recipes';
 
 class RecipePage extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            showEditForm: false,
-            redirect: false,
-        }
+    state = {
+        showEditForm: false,
+        redirect: false,
     }
 
-    componentWillMount() {
-        if (!this.props.recipes[0]) {
-            this.props.loadRecipes();
-        }
-    }
     handleEditClick() {
         this.setState({
             showEditForm: !this.state.showEditForm
@@ -44,12 +36,7 @@ class RecipePage extends React.Component {
                 recipe.ingredients_recipes_attributes = recipe.ingredients_recipes
                 if (this.state.showEditForm) {
                     return (
-                        <div className="col-5">
-                            <div className="card" style={{margin: '20px', padding: '0px 20px 20px 20px'}}>
-                                <h3>Edit Recipe</h3>
-                                <RecipeInput recipe={recipe} addRecipe={this.props.editRecipe} buttonValue={"Save"}/>
-                            </div>
-                        </div>
+                        <RecipeInput recipe={recipe} label={"Edit Recipe"} addRecipe={this.props.editRecipe} buttonValue={"Save"}/>
                     )
                 } else {
                     return (
@@ -76,7 +63,6 @@ class RecipePage extends React.Component {
 const mapStateToProps = state => ({ recipes: state.recipes })
 
 const mapDispatchToProps = dispatch => ({
-    loadRecipes: () => dispatch(loadRecipes()),
     deleteRecipe: recipe => dispatch(deleteRecipe(recipe)),
     editRecipe: recipe => dispatch(editRecipe(recipe))
 })
