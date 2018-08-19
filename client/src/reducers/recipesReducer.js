@@ -1,7 +1,8 @@
 export default function recipesReducer(state = [], action) {
   switch (action.type) {
     case 'LOAD_RECIPES':
-      return action.recipes
+      const recipes = action.recipes.map(recipe => ({...recipe, directions: JSON.parse(recipe.directions)}))
+      return recipes
     case 'ADD_RECIPE':
       return [...state, action.recipe];
     case 'DELETE_RECIPE':

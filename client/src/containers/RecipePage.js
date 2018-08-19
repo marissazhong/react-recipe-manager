@@ -6,7 +6,7 @@ import NavBar from '../components/NavBar';
 import RecipeShow from '../components/recipes/RecipeShow'
 import RecipeInput from '../components/recipes/RecipeInput'
 import { slug } from '../helpers';
-import { deleteRecipe } from '../actions/recipes';
+import { deleteRecipe, editRecipe } from '../actions/recipes';
 
 class RecipePage extends Component {
 
@@ -69,7 +69,7 @@ const mapStateToProps = state => ({ recipes: state.recipes })
 
 const mapDispatchToProps = dispatch => ({
     deleteRecipe: recipe => dispatch(deleteRecipe(recipe)),
-    editRecipe: recipe => dispatch({type: 'EDIT_RECIPE', recipe})
+    editRecipe: recipe => dispatch(editRecipe(recipe))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecipePage);

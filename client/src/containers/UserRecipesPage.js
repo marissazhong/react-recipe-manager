@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 import NavBar from '../components/NavBar';
 import RecipeList from '../components/recipes/RecipeList';
 import RecipeInput from '../components/recipes/RecipeInput';
+import { createRecipe } from '../actions/recipes';
 
 class UserRecipesPage extends React.Component {
     render() {
-        const newRecipe = {userId: 0, name: '', prepTime: '', cookTime: '', ingredients: [{name: '', quantity: ''}], directions: ['']}
+        const newRecipe = {user: {id: 1}, name: '', prep_time: '', cook_time: '', ingredients_recipes_attributes: [{name: '', quantity: ''}], directions: ['']}
         return(
             <div className="container-fluid">
                 <NavBar />
@@ -31,7 +32,7 @@ class UserRecipesPage extends React.Component {
 const mapStateToProps = state => ({ recipes: state.recipes })
 
 const mapDispatchToProps = dispatch => ({
-    addRecipe: recipe => dispatch({ type: "ADD_RECIPE", recipe})
+    addRecipe: recipe => dispatch(createRecipe(recipe))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserRecipesPage);

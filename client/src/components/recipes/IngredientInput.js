@@ -3,30 +3,30 @@ import update from 'react-addons-update';
 
 class IngredientInput extends Component {
     state = {
-        ingredients: this.props.ingredients
+        ingredients_recipes_attributes: this.props.ingredients_recipes_attributes
     }
 
     handleChange(index, field, event) {
         const value = event.target.value
         this.setState({
-            ingredients: update(this.state.ingredients, {[index]: {[field]: {$set: value}}})
+            ingredients_recipes_attributes: update(this.state.ingredients_recipes_attributes, {[index]: {[field]: {$set: value}}})
         })
         this.props.onChange(index, field, value);
     }
 
     addRow = (event) => {
         event.preventDefault();
-        const ingredients = this.state.ingredients
-        ingredients.push({name: '', quantity: ''})
-        this.setState({ingredients: ingredients})
+        const ingredients_recipes_attributes = this.state.ingredients_recipes_attributes
+        ingredients_recipes_attributes.push({name: '', quantity: ''})
+        this.setState({ingredients_recipes_attributes: ingredients_recipes_attributes})
         this.props.changeRow(this.state);
     }
 
     deleteRow = (index, event) => {
         event.preventDefault();
-        const ingredients = this.state.ingredients
-        ingredients.splice(index,1)
-        this.setState({ingredients: ingredients})
+        const ingredients_recipes_attributes = this.state.ingredients_recipes_attributes
+        ingredients_recipes_attributes.splice(index,1)
+        this.setState({ingredients_recipes_attributes: ingredients_recipes_attributes})
         this.props.changeRow(this.state);
     }
 
@@ -46,7 +46,7 @@ class IngredientInput extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.ingredients.map((ingredient, index) => {
+                        {this.state.ingredients_recipes_attributes.map((ingredient, index) => {
                             return (
                                 <tr key={'ingredient-' + index}>
                                     <td><input type="text" className="form-control" onChange={(event) => this.handleChange(index, "name", event)} value={ingredient.name} placeholder="ex. Flour" /></td>

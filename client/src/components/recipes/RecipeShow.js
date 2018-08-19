@@ -8,7 +8,6 @@ class RecipeShow extends Component {
     const match = this.props.match;
     const recipes = this.props.recipes;
     const recipe = recipes.find(recipe => slug(recipe.name) === match.params.recipeName);
-    const directions = JSON.parse(recipe.directions)
     return (
       <div>
       <div className="container-fluid" style={{margin: '20px'}}>
@@ -49,7 +48,7 @@ class RecipeShow extends Component {
             <h2>Directions:</h2>
             <table className="table-sm" style={{width: '400px'}}>
                 <tbody>
-                  {directions.map(function(direction,i) {
+                  {recipe.directions.map(function(direction,i) {
                         return (<tr key={i}>
                           <td>{i+1}. {direction}</td>
                         </tr>)

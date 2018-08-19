@@ -8,10 +8,10 @@ class Recipe < ActiveRecord::Base
         if self.ingredients_recipes
             IngredientsRecipe.where(recipe_id: self.id).delete_all
         end
-        ingredients_recipes_attributes.values.each do |v|
-            if !v["input_name"].empty? && !v["quantity"].empty?
-                ingredient = Ingredient.find_or_create_by(name: v["input_name"].downcase)
-                self.ingredients_recipes.build(ingredient_id: ingredient.id, recipe_id: self.id, input_name: v["input_name"], quantity: v["quantity"])
+        ingredients_recipes_attributes.each do |v|
+            if !v["name"].empty? && !v["quantity"].empty?
+                ingredient = Ingredient.find_or_create_by(name: v["name"].downcase)
+                self.ingredients_recipes.build(ingredient_id: ingredient.id, recipe_id: self.id, name: v["name"], quantity: v["quantity"])
             end
         end
     end

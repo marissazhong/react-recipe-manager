@@ -1,8 +1,4 @@
 
-export const addRecipe = (recipe) => {
-    return { type: 'ADD_RECIPE', recipe };
-}; //not currently used (it is currently directly in UserRecipesPage)
-
 export function loadRecipes() {
     return function(dispatch) {
         return fetch('/api/recipes')
@@ -11,11 +7,21 @@ export function loadRecipes() {
     }
 }
 
-export function createRecipe() {
-
+export function createRecipe(recipe) {
+    return function(dispatch) {
+        return fetch('/api/recipes', {
+            method: "POST",
+            body: JSON.stringify({recipe: recipe}),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(recipe => dispatch({ type: 'ADD_RECIPE', recipe}))
+    }
 }
 
-export function editRecipe() {
+export function editRecipe(recipe) {
 
 }
 

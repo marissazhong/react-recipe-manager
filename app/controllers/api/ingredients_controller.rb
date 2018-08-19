@@ -3,11 +3,7 @@ class IngredientsController < ApplicationController
 
     def index
         @ingredients = Ingredient.all
-        render layout: false
-    end
-
-    def new
-        @ingredient = Ingredient.new
+        render json: @ingredients
     end
 
     def create

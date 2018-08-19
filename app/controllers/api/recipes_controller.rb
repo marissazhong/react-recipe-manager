@@ -2,52 +2,41 @@ module Api
 class RecipesController < ApplicationController
     before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
-    # index page showing user's recipes and all recipes
     def index
         @recipes = Recipe.all
         render json: @recipes, status: 201
     end
 
-    # shows individual recipe
     def show
-        render json: @recipe
+        render json: @recipe, status: 201
     end
 
-    # creates new recipe
     def create
-        @recipe = @user.recipes.build(recipe_params)
-        @recipe.directions = params[:recipe][:directions].values.delete_if {|v| v.empty?}
-        if @recipe.save
-            #redirect_to recipe_path(@recipe)
-            render json: @recipe, status: 201
-        else
-            render :new
-        end
+        input = recipe_params
+        input = JSON.parse(recipe_params) if input.is_a?(String)
+        @recipe = Recipe.new(input)
 
+        @recipe.user_id = User.find_by(username: "marissa").id
+        @recipe.save
+        render json: @recipe, status: 201
     end
 
-    # updates recipe
     def update
         @recipe.update(recipe_params)
         @recipe.directions = params[:recipe][:directions].values.delete_if {|v| v.empty?}
-        if @recipe.save
-            redirect_to recipe_path(@recipe)
-        else
-            render :edit
-        end
+        @recipe.save
+        render json: @recipe, status: 201
     end
 
-    # deletes recipe
     def destroy
         @recipe.destroy
-        message = "Recipe successfully deleted"
-        render json: message
+        render json: "Recipe successfully deleted"
     end
 
     private
 
         def recipe_params
-            params.require(:recipe).permit(:name, :prep_time, :cook_time, ingredients_recipes_attributes: [:name, :quantity])
+            params.require(:recipe).permit(:name, :prep_time, :cook_time, ingredients_recipes_attributes: [:name, :quantity], directions: [])
         end
 
 end
