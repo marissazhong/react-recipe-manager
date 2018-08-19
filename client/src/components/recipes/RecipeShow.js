@@ -1,11 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Images from '../../images/ImportImages';
 import { slug, loadImage } from '../../helpers';
 
-class RecipeShow extends Component {
-
-  render() {
-    const recipe = this.props.recipe
+const RecipeShow = (props) => {
+    const recipe = props.recipe
     return (
       <div>
       <div className="container-fluid" style={{margin: '20px'}}>
@@ -17,8 +15,8 @@ class RecipeShow extends Component {
               <h1>{recipe.name}</h1>
               <h5 style={{margin: '10px'}}>Prep Time: {recipe.prep_time} minutes</h5>
               <h5 style={{margin: '10px'}}>Cook Time: {recipe.cook_time} minutes</h5>
-              <button style={{margin: '10px'}} type="button" className="btn btn-outline-secondary btn-sm" onClick={this.props.handleEditClick}>Edit Recipe</button>
-              <button type="button" className="btn btn-outline-secondary btn-sm" onClick={(event) => this.props.deleteOnClick(recipe)}>Delete Recipe</button>
+              <button style={{margin: '10px'}} type="button" className="btn btn-outline-secondary btn-sm" onClick={props.handleEditClick}>Edit Recipe</button>
+              <button type="button" className="btn btn-outline-secondary btn-sm" onClick={(event) => props.deleteOnClick(recipe)}>Delete Recipe</button>
             </div>
         </div> {/* end of header row */}
         <br />
@@ -58,7 +56,6 @@ class RecipeShow extends Component {
       </div> {/* end of show recipe container */}
     </div> 
     )
-  }
 }
 
 export default RecipeShow;
