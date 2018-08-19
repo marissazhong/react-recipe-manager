@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom'
 
@@ -6,15 +6,22 @@ import NavBar from '../components/NavBar';
 import RecipeShow from '../components/recipes/RecipeShow'
 import RecipeInput from '../components/recipes/RecipeInput'
 import { slug } from '../helpers';
-import { deleteRecipe, editRecipe } from '../actions/recipes';
+import { loadRecipes, deleteRecipe, editRecipe } from '../actions/recipes';
 
-class RecipePage extends Component {
-
-    state = {
-        showEditForm: false,
-        redirect: false
+class RecipePage extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            showEditForm: false,
+            redirect: false,
+        }
     }
 
+    componentWillMount() {
+        if (!this.props.recipes[0]) {
+            this.props.loadRecipes();
+        }
+    }
     handleEditClick() {
         this.setState({
             showEditForm: !this.state.showEditForm
@@ -33,7 +40,6 @@ class RecipePage extends Component {
             return <Redirect to='/' />
         } else {
             const recipe = this.props.recipes.find(recipe => slug(recipe.name) === this.props.match.params.recipeName);
-            console.log(recipe)
             const RecipeEditInput = () => {
                 recipe.ingredients_recipes_attributes = recipe.ingredients_recipes
                 if (this.state.showEditForm) {
@@ -57,7 +63,7 @@ class RecipePage extends Component {
                     <NavBar />
                     <div className="row">
                         <div className="col-7">
-                            <RecipeShow recipe={recipe} handleEditClick={this.handleEditClick.bind(this)} deleteOnClick={this.deleteOnClick.bind(this)} recipes={this.props.recipes} match={this.props.match}/>
+                            <RecipeShow recipe={recipe} handleEditClick={this.handleEditClick.bind(this)} deleteOnClick={this.deleteOnClick.bind(this)} />
                         </div>
                         <RecipeEditInput />
                     </div>
@@ -70,6 +76,7 @@ class RecipePage extends Component {
 const mapStateToProps = state => ({ recipes: state.recipes })
 
 const mapDispatchToProps = dispatch => ({
+    loadRecipes: () => dispatch(loadRecipes()),
     deleteRecipe: recipe => dispatch(deleteRecipe(recipe)),
     editRecipe: recipe => dispatch(editRecipe(recipe))
 })
