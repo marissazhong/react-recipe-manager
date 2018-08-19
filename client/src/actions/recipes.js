@@ -22,7 +22,18 @@ export function createRecipe(recipe) {
 }
 
 export function editRecipe(recipe) {
-
+    console.log(recipe)
+    return function(dispatch) {
+        return fetch(`/api/recipes/${recipe.id}`, {
+            method: "PUT",
+            body: JSON.stringify({recipe: recipe}),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(recipe => dispatch({ type: 'EDIT_RECIPE', recipe}))
+    }
 }
 
 export function deleteRecipe(recipe) {

@@ -35,9 +35,10 @@ class RecipeInput extends Component {
 
     handleOnSubmit(event) {
         event.preventDefault();
+        console.log(this.state)
         this.props.addRecipe(this.state);
         this.setState({
-            user: {id: 1}, name: '', prep_time: '', cook_time: '', ingredients_recipes_attributes: '', directions: ''
+            user: {id: 1}, name: '', prep_time: '', cook_time: '', ingredients_recipes: '', ingredients_recipes_attributes: '', directions: ''
         });
         event.target.reset();
     }

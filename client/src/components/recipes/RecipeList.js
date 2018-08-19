@@ -10,7 +10,6 @@ class RecipeList extends React.Component {
   renderRecipeIndex() {
     const currentUser = 1;
     let recipes;
-    console.log(this.props.recipes)
     if (this.props.fromUser === true) {
       recipes = this.props.recipes.filter(recipe => recipe.user.id === currentUser)
     } else {

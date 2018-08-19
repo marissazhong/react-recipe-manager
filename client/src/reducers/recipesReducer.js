@@ -4,11 +4,14 @@ export default function recipesReducer(state = [], action) {
       const recipes = action.recipes.map(recipe => ({...recipe, directions: JSON.parse(recipe.directions)}))
       return recipes
     case 'ADD_RECIPE':
-      return [...state, action.recipe];
+      const new_recipe = {...action.recipe, directions: JSON.parse(action.recipe.directions)}
+      return [...state, new_recipe];
     case 'DELETE_RECIPE':
       return state.filter(recipe => recipe.name !== action.recipe.name);
     case 'EDIT_RECIPE':
-      return [...state.filter(recipe => recipe.name !== action.recipe.name), action.recipe]
+      console.log(action.recipe)
+      const updated_recipe = {...action.recipe, ingredients_recipes: action.recipe.ingredients_recipes.splice(0,action.recipe.ingredients_recipes.length/2), directions: JSON.parse(action.recipe.directions)}
+      return [...state.filter(recipe => recipe.name !== action.recipe.name), updated_recipe]
     default:
       return state;
   }

@@ -33,7 +33,9 @@ class RecipePage extends Component {
             return <Redirect to='/' />
         } else {
             const recipe = this.props.recipes.find(recipe => slug(recipe.name) === this.props.match.params.recipeName);
+            console.log(recipe)
             const RecipeEditInput = () => {
+                recipe.ingredients_recipes_attributes = recipe.ingredients_recipes
                 if (this.state.showEditForm) {
                     return (
                         <div className="col-5">
@@ -55,7 +57,7 @@ class RecipePage extends Component {
                     <NavBar />
                     <div className="row">
                         <div className="col-7">
-                            <RecipeShow handleEditClick={this.handleEditClick.bind(this)} deleteOnClick={this.deleteOnClick.bind(this)} recipes={this.props.recipes} match={this.props.match}/>
+                            <RecipeShow recipe={recipe} handleEditClick={this.handleEditClick.bind(this)} deleteOnClick={this.deleteOnClick.bind(this)} recipes={this.props.recipes} match={this.props.match}/>
                         </div>
                         <RecipeEditInput />
                     </div>

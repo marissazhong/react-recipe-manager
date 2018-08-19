@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import update from 'react-addons-update';
 
 class IngredientInput extends Component {
+    
     state = {
         ingredients_recipes_attributes: this.props.ingredients_recipes_attributes
     }

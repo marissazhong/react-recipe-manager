@@ -5,9 +5,7 @@ import { slug, loadImage } from '../../helpers';
 class RecipeShow extends Component {
 
   render() {
-    const match = this.props.match;
-    const recipes = this.props.recipes;
-    const recipe = recipes.find(recipe => slug(recipe.name) === match.params.recipeName);
+    const recipe = this.props.recipe
     return (
       <div>
       <div className="container-fluid" style={{margin: '20px'}}>
@@ -36,7 +34,7 @@ class RecipeShow extends Component {
               </thead>
               <tbody>
                 {recipe.ingredients_recipes.map(function(ingred,i) {
-                  return (<tr key={slug(ingred.name)}>
+                  return (<tr key={recipe.id + '-' + slug(ingred.name)}>
                     <td>{ingred.name.slice(0,1).toUpperCase() + ingred.name.slice(1)}</td>
                     <td>{ingred.quantity}</td>
                   </tr>)
