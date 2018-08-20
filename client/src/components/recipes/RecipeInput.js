@@ -35,11 +35,15 @@ class RecipeInput extends Component {
 
     handleOnSubmit(event) {
         event.preventDefault();
-        this.props.addRecipe(this.state);
-        this.setState({
-            user: {id: 1}, name: '', prep_time: '', cook_time: '', ingredients_recipes: '', ingredients_recipes_attributes: '', directions: ''
-        });
-        event.target.reset();
+        if (this.state.name) {
+            this.props.addRecipe(this.state);
+            this.setState({
+                error: '', user: {id: 1}, name: '', prep_time: '', cook_time: '', ingredients_recipes: '', ingredients_recipes_attributes: '', directions: ''
+            });
+            event.target.reset();
+        } else {
+            this.setState({error: "Error: recipe must have a name!"})
+        }
     }
 
     render() {
@@ -47,6 +51,7 @@ class RecipeInput extends Component {
             <div className="col-5">
                 <div className="card" style={{margin: '20px', padding: '0px 20px 20px 20px'}}>
                     <h3>{this.props.label}</h3>
+                    <p>{this.state.error}</p>
                     <form onSubmit={(event) => this.handleOnSubmit(event)}>
                         <TextInput label="Name" onChange={(event) => this.handleChange("name", event)} value={this.state.name}/>
                         <TextInput label="Prep Time" onChange={(event) => this.handleChange("prep_time", event)} value={this.state.prep_time} />
