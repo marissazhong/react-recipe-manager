@@ -22,7 +22,6 @@ export function createRecipe(recipe) {
 }
 
 export function editRecipe(recipe) {
-    console.log(recipe)
     return function(dispatch) {
         return fetch(`/api/recipes/${recipe.id}`, {
             method: "PUT",
