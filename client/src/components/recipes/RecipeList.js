@@ -1,9 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import Images from '../../images/ImportImages';
-import { slug, loadImage } from '../../helpers';
+import RecipeCard from './RecipeCard';
 
 class RecipeList extends React.Component {
 
@@ -28,20 +26,21 @@ class RecipeList extends React.Component {
     })
   }
 
+  handleClick(event, recipeId) {
+    event.preventDefault();
+    this.setState({
+      [recipeId]: 0
+    });
+  }
+
   render() {
     const recipes = this.renderRecipeIndex();
-    const renderRecipes = Object.values(recipes).map(recipe =>
-        <Link key={slug(recipe.name)} className="card" to={`recipes/${slug(recipe.name)}`} style={{ width: '240px', margin: '20px' }}>
-          <img className="card-img-top" src={Images[loadImage(recipe)]} alt={recipe.name} />
-          <div className="card-body">
-            <p className="card-title">{recipe.name}</p>
-          </div>
-        </Link>
-    );
     return (
       <div className="container">
         <div className="row justify-content-center">
-         {renderRecipes}
+         {Object.values(recipes).map(recipe =>
+            <RecipeCard recipe={recipe} />
+          )}
         </div>
       </div>
     );
