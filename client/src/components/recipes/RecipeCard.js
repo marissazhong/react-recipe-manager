@@ -10,16 +10,23 @@ class RecipeCard extends React.Component {
         likes: 0
     }
 
+    handleClick(event) {
+        event.preventDefault();
+        this.setState({
+          likes: this.state.likes+1
+        });
+    }
+
     render() {
         const recipe = this.props.recipe;
         return(
             <div className="card" style={{ width: '240px', margin: '20px' }}>
-                <Link key={slug(recipe.name)} className="card" to={`recipes/${slug(recipe.name)}`}>
+                <Link className="card" to={`recipes/${slug(recipe.name)}`}>
                     <img className="card-img-top" src={Images[loadImage(recipe)]} alt={recipe.name}/>
                 </Link>
                 <div className="card-body">
                     <p className="card-title">{recipe.name}</p>
-                    <button type="button" onClick={(event) => this.handleClick(event, recipe.id)} className="btn btn-outline-info btn-sm">Like</button>     {this.state.likes}
+                    <button type="button" onClick={(event) => this.handleClick(event)} className="btn btn-outline-info btn-sm">Like</button>     {this.state.likes}
                 </div>
             </div>
         )

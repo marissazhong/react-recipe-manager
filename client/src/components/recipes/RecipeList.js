@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import RecipeCard from './RecipeCard';
+import { slug } from '../../helpers';
 
 class RecipeList extends React.Component {
 
@@ -26,20 +27,13 @@ class RecipeList extends React.Component {
     })
   }
 
-  handleClick(event, recipeId) {
-    event.preventDefault();
-    this.setState({
-      [recipeId]: 0
-    });
-  }
-
   render() {
     const recipes = this.renderRecipeIndex();
     return (
       <div className="container">
         <div className="row justify-content-center">
          {Object.values(recipes).map(recipe =>
-            <RecipeCard recipe={recipe} />
+            <RecipeCard key={slug(recipe.name)} recipe={recipe} />
           )}
         </div>
       </div>
