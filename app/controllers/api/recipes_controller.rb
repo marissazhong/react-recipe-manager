@@ -1,6 +1,6 @@
 module Api
 class RecipesController < ApplicationController
-    before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+    before_action :set_recipe, only: [:show, :edit, :update, :update_likes, :destroy]
     before_action :parse_params, only: [:create, :update]
 
     def index
@@ -21,6 +21,14 @@ class RecipesController < ApplicationController
 
     def update
         @recipe.update(@input)
+        @recipe.save
+        render json: @recipe, status: 201
+    end
+
+    def update_likes
+        input = params[:likes]
+        input = parseInt(input) if input.is_a?(String)
+        @recipe.likes = input
         @recipe.save
         render json: @recipe, status: 201
     end

@@ -344,6 +344,7 @@ recipes = [recipe1, recipe2, recipe3, recipe4, recipe5, recipe6, recipe7, recipe
 recipes.each do |recipe|
     new_recipe = Recipe.create(name: recipe[:name], prep_time: recipe[:prep_time], cook_time: recipe[:cook_time], user_id: User.find_by(username: "marissa").id)
     new_recipe.directions = recipe[:directions].values
+    new_recipe.likes = 0
     recipe[:ingredients_recipes_attributes].each do |id,ingredient|
         current_ingredient = Ingredient.find_or_create_by(name: ingredient[:name].downcase)
         new_recipe.ingredients_recipes.build(ingredient_id: current_ingredient.id, recipe_id: new_recipe.id, name: ingredient[:name], quantity: ingredient[:quantity])

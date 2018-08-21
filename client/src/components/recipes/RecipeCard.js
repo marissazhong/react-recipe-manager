@@ -1,20 +1,24 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import Images from '../../images/ImportImages';
 import { slug, loadImage } from '../../helpers';
+import { updateLikes } from '../../actions/recipes';
 
 class RecipeCard extends React.Component {
 
-    state = {
-        likes: 0
-    }
+    state = this.props.recipe
 
-    handleClick(event) {
+    handleClick(event, recipe) {
         event.preventDefault();
         this.setState({
           likes: this.state.likes+1
-        });
+        }, );
+      }
+
+    componentDidUpdate() {
+        updateLikes(this.state.id, this.state.likes)
     }
 
     render() {
@@ -26,7 +30,7 @@ class RecipeCard extends React.Component {
                 </Link>
                 <div className="card-body">
                     <p className="card-title">{recipe.name}</p>
-                    <button type="button" onClick={(event) => this.handleClick(event)} className="btn btn-outline-info btn-sm">Like</button>     {this.state.likes}
+                    <button type="button" onClick={(event) => this.handleClick(event, recipe)} className="btn btn-outline-info btn-sm">Like</button>     {this.state.likes}
                 </div>
             </div>
         )

@@ -43,3 +43,13 @@ export function deleteRecipe(recipe) {
         .then( () => dispatch({ type: 'DELETE_RECIPE', recipe}))
     }
 }
+
+export function updateLikes(recipeId, likes) {
+    fetch(`/api/recipes/${recipeId}/likes`, {
+        method: "PUT",
+        body: JSON.stringify({likes: likes}),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+}
